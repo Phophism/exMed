@@ -11,10 +11,11 @@
     
     <!--Responsive meta tag-->
     <title><?php echo "รายการงานเปิดรับสมัคร"; ?></title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
     <!-- CSS -->
         <!-- quixlab css -->
-            <link href="<?php echo base_url(); ?>assets/quixlab/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="<?php echo base_url(); ?>assets/quixlab/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" >
             <link rel="stylesheet" href="<?php echo base_url(); ?>assets/quixlab/css/style.css">
         <!-- data table css -->
             <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.23/datatables.min.css" /> -->
