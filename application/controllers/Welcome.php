@@ -9,11 +9,53 @@ class Welcome extends CI_Controller
 		parent::__construct();
 		date_default_timezone_set("Asia/Bangkok");
 		$this->load->library('pagination');
+		$this->load->helper('form');
+		$this->load->helper('url');
 		$this->load->model('Pos_list_model');
 	}
 
 	public function index()
 	{
+
+		$config = $this->pagination_config();
+
+		$this->pagination->initialize($config);
+
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0 ;
+		// $results = $this->Pos_list_model->get_open_position_list_limit( $page,$config['per_page']);
+		$results = $this->Pos_list_model->get_open_position_list();
+		$data['link'] = $this->pagination->create_links();
+		$data['total_rows'] = $config['total_rows'];
+
+		$nrow = array();
+		
+
+		// echo "<pre>";
+		// var_dump($results);
+		// echo "</pre>";
+
+		$this->load->view('open_pos_list_view', array(
+			"data" => $data,
+			"result" => $results,
+			"limit" => $config['per_page'],
+			"start_index" => $page
+		));
+	}
+
+
+	// ----------- Function ----------- //
+
+	public function open_job_list(){
+		$post_data = $this->input->post();
+        echo '<pre>';
+        var_dump($post_data);
+        echo '</pre>';
+		$job_list = $this->Pos_list_model->get_open_position_ajax($post_data);
+
+		echo json_encode($job_list);
+	}
+
+	private function pagination_config(){
 		$config = array();
 		$config['base_url'] = site_url('Welcome/index/');  // set url
 		$config['total_rows'] = $this->Pos_list_model->get_open_position_nrow(); // get amount of data
@@ -56,22 +98,6 @@ class Welcome extends CI_Controller
 
 		// $config['attributes'] = array('class' => 'page-link');
 
-		$this->pagination->initialize($config);
-
-		$page = ($this->uri->segment(3,0)); #) ? $this->uri->segment(3) : 0 ;
-		$results = $this->Pos_list_model->get_open_position_list_limit( $page,$config['per_page']);
-		$data['link'] = $this->pagination->create_links();
-		$data['total_rows'] = $config['total_rows'];
-
-		// echo "<pre>";
-		// var_dump($results);
-		// echo "</pre>";
-
-		$this->load->view('open_pos_list_view', array(
-			"data" => $data,
-			"result" => $results,
-			"limit" => $config['per_page'],
-			"start_index" => $page
-		));
+		return $config;
 	}
 }
