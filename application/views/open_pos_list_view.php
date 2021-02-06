@@ -84,7 +84,8 @@ $this->load->view('layout/header');
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    foreach ($job_list as $detail) {
+
+                                                    foreach ($result as $detail) {
                                                     ?>
                                                         <tr role="row" class="text-center">
                                                             <td class="text-center">
@@ -128,26 +129,19 @@ $this->load->view('layout/header');
                                     <div class="row">
                                         <div class="col-sm-12 col-md-5">
                                             <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">
-                                                Showing  <?php echo /* $page* */$start_index+1; ?> to 
-                                                <?php   
-                                                    if($nrow > $limit)
-                                                        echo /* page* */$limit; 
-                                                    else
-                                                        echo $nrow
-                                                ?> of <?php echo $nrow; ?> entries
+                                                Showing <?php echo /* $page* */ $start_index + 1; ?> to
+                                                <?php
+                                                if ($data['total_rows'] <=  $limit)
+                                                    echo /* page* */ $limit;
+                                                else
+                                                    echo $data['total_rows']
+                                                ?> of <?php echo $data['total_rows']; ?> entries
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-7">
                                             <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
                                                 <ul class="pagination">
-                                                    <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                                                    <li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                                    <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                                    <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                                                    <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                                                    <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-                                                    <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
-                                                    <li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                                                    <?php echo $data['link']; ?>
                                                 </ul>
                                             </div>
                                         </div>
@@ -162,88 +156,6 @@ $this->load->view('layout/header');
         <!-- #/ container -->
     </div>
 
-
-
-
-    <!--details
-    <div class="col-lg-12">
-        <div class="row">
-            <div class="container">
-                <div class="widget widget-table">
-                    <div class="widget-header">
-                        <h2>open position list</h2>
-                    </div>
-                    <div class="widget-content">
-                        <div class="row-fluid">
-                            <div class="col-lg-12">
-                                <a>Today : </a>
-                                <?php echo date("d M Y"); ?>
-                                <table class="table" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center">วันที่ประกาศ</th>
-                                            <th class="text-center">วันที่สิ้นสุด</th>
-                                            <th class="text-center">ประเภท</th>
-                                            <th class="text-center">ตำแหน่ง</th>
-                                            <th class="text-center">หน่วยงาน</th>
-                                            <th class="text-center">จำนวน</th>
-                                            <th class="text-center">อัตราจ้าง</th>
-                                            <th class="text-center">สถานะ</th>
-                                            <th class="text-center">หมายเหตุ</th>
-                                            <th class="text-center">Ref.</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-center">
-                                        <?php
-                                        foreach ($job_list as $detail) {
-                                        ?>
-                                            <tr role="row" class="text-center">
-                                                <td class="text-center">
-                                                    <?php echo $detail->public_date; ?>
-                                                </td>
-                                                <td class="text-center">
-                                                    <?php echo $detail->end_date; ?>
-                                                </td>
-                                                <td class="text-center">
-                                                    <?php echo $detail->type_name; ?>
-                                                </td>
-                                                <td class="text-center">
-                                                    <?php echo $detail->position_name; ?>
-                                                </td>
-                                                <td class="text-center">
-                                                    <?php echo $detail->ward_name; ?>
-                                                </td>
-                                                <td class="text-center">
-                                                    <?php echo $detail->n_open; ?>
-                                                </td>
-                                                <td class="text-center">
-                                                    <?php echo $detail->salary; ?>
-                                                </td>
-                                                <td class="text-center">
-                                                    <?php echo $detail->status_id; ?>
-                                                </td>
-                                                <td class="text-center">
-                                                    <?php echo $detail->remark; ?>
-                                                </td>
-                                                <td class="text-center">
-                                                    <?php echo $detail->view_count; ?>
-                                                </td>
-                                            </tr>
-                                        <?php
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
--->
-    <!-- last part  -->
 </body>
 
 </html>

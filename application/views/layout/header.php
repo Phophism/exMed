@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--Responsive meta tag-->
-    <title><?php echo $title ?></title>
+    <title><?php echo "รายการงานเปิดรับสมัคร"; ?></title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/quixlab/css/style.css">

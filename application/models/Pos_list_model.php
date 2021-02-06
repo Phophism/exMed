@@ -3,6 +3,11 @@
 class Pos_list_model extends CI_Model
 {
 
+    public function __construct()
+	{
+		parent::__construct();
+	}
+
     // Get all data from "open_position"
     // including all fields and records
     public function get_open_position()
@@ -49,6 +54,7 @@ class Pos_list_model extends CI_Model
     public function get_open_position_list_limit($index_start, $limit)
     {
         $data = $this->db->query("select 
+        OP.id,
         OP.public_date,
         OP.end_date,
         JT.type_name,
