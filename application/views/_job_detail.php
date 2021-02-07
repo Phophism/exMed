@@ -256,8 +256,6 @@ $this->load->view('layouts/header');
             </div>
         </div>
     </div>
-
-
-
+</body>
 
     </html>

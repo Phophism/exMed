@@ -11,10 +11,18 @@ class Job_detail extends CI_Controller{
     }
 
     public function index(){
+ 
+        //$get_id = $this->input->post('id');
+        
+        $job_id = $this->input->post('id');
+        print_r($_POST);
+        echo $job_id;
+        if(isset($job_id))
+            $this->job_list_model->update_view_count($job_id);
 
-        $data = $this->Job_list_model->get_job_detail(01);
+        $job_detail=$this->uri->segment(3); 
+        $data = $this->Job_list_model->get_job_detail($job_detail);
    
-         
         // echo "<pre>" ;
         // var_dump($data);
         // echo "</pre>";
@@ -25,6 +33,13 @@ class Job_detail extends CI_Controller{
             'title' => $data['pos_num']." - ".$data['position_name']
         )  );
 
+    }
+
+    public function counter(){
+        $job_id = $this->input->post('id');
+        print_r($_POST);
+        echo $job_id;
+         $this->job_list_model->update_view_count($job_id);
     }
 
 }

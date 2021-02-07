@@ -9,6 +9,7 @@ class Job_list extends CI_Controller
 		parent::__construct();
 		date_default_timezone_set("Asia/Bangkok");
 		$this->load->model('Job_list_model');
+		$this->load->helper('form');
 	}
 
 	public function index()

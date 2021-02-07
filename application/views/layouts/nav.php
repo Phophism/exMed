@@ -1,6 +1,6 @@
 <!-- Nav -->
 
-<div class="nav-header">
+<!-- <div class="nav-header">
             <div class="brand-logo">
                 <a href="index.html">
                     <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
@@ -10,7 +10,7 @@
                     </span>
                 </a>
             </div>
-        </div>
+        </div> -->
         <!--**********************************
             Nav header end
         ***********************************-->

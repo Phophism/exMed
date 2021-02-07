@@ -49,19 +49,19 @@ $this->load->view('layouts/header');
                         <div class="card-body">
                             <h4 class="card-title">Data Table</h4>
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered zero-configuration" id="mydatatable" >
-                                <thead>
+                                <table class="table table-striped table-bordered zero-configuration" id="mydatatable">
+                                    <thead>
                                         <tr>
-                                            <th class="text-center" >วันที่ประกาศ</th>
-                                            <th class="text-center" >วันที่สิ้นสุด</th>
-                                            <th class="text-center" >ประเภท</th>
-                                            <th class="text-center" >ตำแหน่ง</th>
-                                            <th class="text-center" >หน่วยงาน</th>
-                                            <th class="text-center" >จำนวน</th>
-                                            <th class="text-center" >อัตราจ้าง</th>
-                                            <th class="text-center" >สถานะ</th>
-                                            <th class="text-center" >หมายเหตุ</th>
-                                            <th class="text-center" >Ref.</th>
+                                            <th class="text-center">วันที่ประกาศ</th>
+                                            <th class="text-center">วันที่สิ้นสุด</th>
+                                            <th class="text-center">ประเภท</th>
+                                            <th class="text-center">ตำแหน่ง</th>
+                                            <th class="text-center">หน่วยงาน</th>
+                                            <th class="text-center">จำนวน</th>
+                                            <th class="text-center">อัตราจ้าง</th>
+                                            <th class="text-center">สถานะ</th>
+                                            <th class="text-center">หมายเหตุ</th>
+                                            <th class="text-center">Ref.</th>
                                             <!-- <th style="display:none" >หมายเลขสมัครงาน</th> -->
                                         </tr>
                                     </thead>
@@ -72,34 +72,54 @@ $this->load->view('layouts/header');
                                         ?>
                                             <tr>
                                                 <td>
-                                                    <?php echo $detail->public_date; ?>
+                                                    <div onclick="trigger_counter(<?php echo $detail->id;?>) ; location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                        <?php echo $detail->public_date; ?>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <?php echo $detail->end_date; ?>
+                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                        <?php echo $detail->end_date; ?>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <?php echo $detail->type_name; ?>
+                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                        <?php echo $detail->type_name; ?>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <?php echo $detail->position_name; ?>
+                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                        <?php echo $detail->position_name; ?>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <?php echo $detail->ward_name; ?>
+                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                        <?php echo $detail->ward_name; ?>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <?php echo $detail->n_open; ?>
+                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                        <?php echo $detail->n_open; ?>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <?php echo $detail->salary; ?>
+                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                        <?php echo $detail->salary; ?>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <?php echo $detail->job_status_name; ?>
+                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                        <?php echo $detail->job_status_name; ?>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <?php echo $detail->remark; ?>
+                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                        <?php echo $detail->remark; ?>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <?php echo $detail->view_count; ?>
+                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                        <?php echo $detail->view_count; ?>
+                                                    </div>
                                                 </td>
                                                 <!-- <td style="display:none" >
                                                     <?php echo $detail->pos_num; ?>
