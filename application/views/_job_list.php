@@ -62,6 +62,7 @@ $this->load->view('layouts/header');
                                             <th class="text-center" >สถานะ</th>
                                             <th class="text-center" >หมายเหตุ</th>
                                             <th class="text-center" >Ref.</th>
+                                            <!-- <th style="display:none" >หมายเลขสมัครงาน</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -100,6 +101,9 @@ $this->load->view('layouts/header');
                                                 <td>
                                                     <?php echo $detail->view_count; ?>
                                                 </td>
+                                                <!-- <td style="display:none" >
+                                                    <?php echo $detail->pos_num; ?>
+                                                </td> -->
                                             </tr>
                                         <?php
                                         }

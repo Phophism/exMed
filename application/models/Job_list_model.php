@@ -1,12 +1,12 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Pos_list_model extends CI_Model
+class Job_list_model extends CI_Model
 {
 
     public function __construct()
-	{
-		parent::__construct();
-	}
+    {
+        parent::__construct();
+    }
 
     // Get all data from "open_position"
     // including all fields and records
@@ -21,6 +21,7 @@ class Pos_list_model extends CI_Model
     public function get_open_position_list()
     {
         $data = $this->db->query("select 
+        OP.id,
         OP.public_date,
         OP.end_date,
         JT.type_name,
@@ -30,7 +31,8 @@ class Pos_list_model extends CI_Model
         OP.salary,
         JS.job_status_name,
         OP.remark,
-        OP.view_count
+        OP.view_count,
+        OP.pos_num
         from open_position as OP
         inner join tb_job_type as JT
         on OP.job_type_id = JT.id
@@ -41,6 +43,69 @@ class Pos_list_model extends CI_Model
         inner join tb_job_status as JS
         on OP.status_id = JS.id
             ")->result();
+        return $data;
+
+        // ต้องดักงานที่ยังไม่ถึงเวลา Public ด้วย
+    }
+
+    public function get_job_detail($job_id)
+    {
+        $query = $this->db->query(
+            "select
+                OP.id,
+                JS.job_status_name,
+                P.position_name,
+                OP.pos_num,
+                L.ward_name,
+                JT.type_name,
+                OP.n_open,
+                OP.salary,
+                OP.end_date,
+                OP.announce_name_date,
+                OP.is_exam,
+                OP.exam_date,
+                OP.exam_result_date,
+                OP.is_interview,
+                OP.interview_date,
+                OP.interview_result_date,
+                OP.remark,
+                OP.view_count
+            from open_position as OP
+            inner join tb_job_type as JT
+            on OP.job_type_id = JT.id
+            inner join tb_position as P
+            on OP.pos_id = P.position_code
+            inner join tb_location1 as L
+            on OP.unit_id = L.Ward_code
+            inner join tb_job_status as JS
+            on OP.status_id = JS.id
+            where OP.id = '" . $job_id . "'"
+        )->result_array();
+
+        foreach ($query as $key => $value) {
+            $data['id'] = $value['id'];
+            $data['job_status_name'] = $value['job_status_name'];
+            $data['position_name'] = $value['position_name'];
+            $data['pos_num'] = $value['pos_num'];
+            $data['ward_name'] = $value['ward_name'];
+            $data['type_name'] = $value['type_name'];
+            $data['n_open'] = $value['n_open'];
+            $data['salary'] = $value['salary'];
+            $data['end_date'] = $value['end_date'];
+            $data['announce_name_date'] = $value['announce_name_date'];
+            $data['is_exam'] = $value['is_exam'];
+            $data['exam_date'] = $value['exam_date'];
+            $data['exam_result_date'] = $value['exam_result_date'];
+            $data['is_interview'] = $value['is_interview'];
+            $data['interview_date'] = $value['interview_date'];
+            $data['interview_result_date'] = $value['interview_result_date'];
+            $data['remark'] = $value['remark'];
+            $data['view_count'] = $value['view_count'];
+        }
+        // echo "<pre>" ;
+        // var_dump($data);
+        // echo "</pre>";
+
         return $data;
     }
 
@@ -160,7 +225,7 @@ class Pos_list_model extends CI_Model
     //      where ".$search_query/"
     //      order by OP.public_date DESC
     //      limit " . $nrow . "," . $start)->result();
-         
+
     //     $data = array();
 
     //     foreach($fetch_data as $record){
