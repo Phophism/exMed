@@ -27,6 +27,10 @@
 <script src="<?php echo base_url(); ?>assets/quixlab/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/quixlab/plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
 
+<!-- form validation -->
+<script src="<?php echo base_url(); ?>assets/quixlab/plugins/validation/jquery.validate.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/quixlab/plugins/validation/jquery.validate-init.js"></script>
+
 <!-- Datatable script -->
 <script type="text/javascript">
     $("#mydatatable").DataTable({

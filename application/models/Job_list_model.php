@@ -121,6 +121,30 @@ class Job_list_model extends CI_Model
         return $update ;
     }
 
+    public function get_job_type(){
+        $this->db->select('*');
+        $this->db->from('tb_job_type');
+        $data = $this->db->get();
+        return $data->result();
+    }
+
+    public function get_job_position(){
+        $this->db->select('position_code, position_name');
+        $this->db->from('tb_position');
+        $this->db->order_by('position_code');
+        $data = $this->db->get();
+        return $data->result();
+    }
+
+    public function get_ward(){
+        $this->db->select('ward_code, ward_name1');
+        $this->db->from('tb_location1');
+        $this->db->order_by('ward_code');
+        $data = $this->db->get();
+        return $data->result();
+    }
+
+
     // Get number of data in "open_position"
     // public function get_open_position_nrow()
     // {
