@@ -48,11 +48,20 @@ $this->load->view('layouts/header');
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="col-12">
-                                <br>
-                                <hr>
-                                <br>
+                            <div class="row">
+                                <div class="col-2">
+                                </div>
+                                <div class="col-8" style="justify-content: center ; align-items: center ; display: flex;">
+                                    <h2><?php echo $data['pos_num']; ?>&ensp; - </h2>
+                                    <h3> &ensp; <?php  echo $data['position_name']; ?></h3>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn mb-1 btn-rounded btn-outline-warning" style="margin-right:10px">แก้ไข</button>
+                                    <button type="button" class="btn mb-1 btn-rounded btn-outline-danger">ลบ</button>
+                                </div>
                             </div>
+                            <hr>
+                            <br>
                             <lable>
                                 <div class="row">
                                     <div class="col-4">
@@ -248,7 +257,7 @@ $this->load->view('layouts/header');
                             </div>
 
                             <div class="col-12" style="justify-content: center ; align-items: center ; display: flex;">
-                                <button onclick="location.href='<?php echo base_url();?>job_list/index'" type="button" class="btn mb-1 btn-rounded btn-info">กลับหน้าหลัก</button>
+                                <button onclick="location.href='<?php echo base_url(); ?>job_list/index'" type="button" class="btn mb-1 btn-rounded btn-info">กลับหน้าหลัก</button>
                             </div>
                         </div>
                     </div>
@@ -256,6 +265,9 @@ $this->load->view('layouts/header');
             </div>
         </div>
     </div>
+    <?php
+    $this->load->view('layouts/_script');
+    ?>
 </body>
 
-    </html>
+</html>

@@ -12,20 +12,29 @@
     <!--Responsive meta tag-->
     <title><?php echo $title; ?></title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
+        
     <!-- CSS -->
         <!-- quixlab css -->
             <link rel="stylesheet" href="<?php echo base_url(); ?>assets/quixlab/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" >
             <link rel="stylesheet" href="<?php echo base_url(); ?>assets/quixlab/css/style.css">
         <!-- data table css -->
             <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.23/datatables.min.css" /> -->
+        <!-- datepicker -->
+            <link href="<?php echo base_url(); ?>assets/quixlab/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
 
+            
     <!-- style -->
     <style>
         .header {
             margin: 0px 0px 0px 0px;
         }
         [data-sidebar-style="full"] .header{
+            width : calc(100%);
+        }
+        [data-sidebar-style="overlay"] .header{
+            width : calc(100%);
+        }
+        [data-sidebar-style="mini"] .header{
             width : calc(100%);
         }
 
