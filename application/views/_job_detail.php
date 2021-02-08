@@ -84,7 +84,7 @@ $this->load->view('layouts/header');
                                     </div>
                                     <div class="col-4">
                                         <div class="" style="text-align:left">
-                                            <p>E1700066</p>
+                                            <p><?php echo $data['pos_num']; ?></p>
                                         </div>
                                     </div>
                                 </div>

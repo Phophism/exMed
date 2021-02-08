@@ -72,52 +72,52 @@ $this->load->view('layouts/header');
                                         ?>
                                             <tr>
                                                 <td>
-                                                    <div onclick="trigger_counter(<?php echo $detail->id;?>) ; location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->public_date; ?>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->end_date; ?>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->type_name; ?>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->position_name; ?>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->ward_name; ?>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->n_open; ?>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->salary; ?>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->job_status_name; ?>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->remark; ?>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div onclick="location.href='<?php echo base_url(); ?>job_detail/index/<?php echo $detail->id; ?>'">
+                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->view_count; ?>
                                                     </div>
                                                 </td>

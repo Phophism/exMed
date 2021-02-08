@@ -110,11 +110,15 @@ class Job_list_model extends CI_Model
     }
 
     public function update_view_count($job_id){
-        $this->db->query(
-            "update open_position
-            set view_count = view_count+1
-            where id='".$job_id."'"
-        );
+        // $this->db->query(
+        //     "update open_position
+        //     set view_count = view_count+1
+        //     where id='".$job_id."'"
+        // )->result();
+        $this->db->set('view_count','view_count+1',FALSE);
+        $this->db->where('id',$job_id);
+        $update = $this->db->update('open_position');
+        return $update ;
     }
 
     // Get number of data in "open_position"
