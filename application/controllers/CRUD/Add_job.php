@@ -8,6 +8,7 @@ class Add_job extends CI_Controller
         parent::__construct();
         date_default_timezone_set("Asia/Bangkok");
         $this->load->model('job_list_model');
+        $this->load->helper('url');
     }
 
     public function index()
@@ -51,13 +52,13 @@ class Add_job extends CI_Controller
                 $file_name = $val['pos_num'] . "_" . $_FILES["fileupload"]['name'];
                 $temp = $_FILES["fileupload"]['tmp_name'];
 
-                // move_uploaded_file($_FILES['userFile']['tmp_name'], $target);
+                move_uploaded_file($temp, $target . $file_name);
 
-                if (move_uploaded_file($temp, $target . $file_name)) {
-                    echo "<script type='text/javascript'> alert('success') </script> ";
-                } else {
-                    echo "<script type='text/javascript'> alert('fail') </script> ";
-                }
+                // if (move_uploaded_file($temp, $target . $file_name)) {
+                //     echo "<script type='text/javascript'> alert('success') </script> ";
+                // } else {
+                //     echo "<script type='text/javascript'> alert('fail') </script> ";
+                // }
             }
             if ($val['is_exam'] == "0"){
                 $val['exam_date'] = null;
@@ -71,5 +72,8 @@ class Add_job extends CI_Controller
         echo "<pre>";
         var_dump($val);
         echo "</pre>";
+
+        
+        // redirect('Job_list');
     }
 }

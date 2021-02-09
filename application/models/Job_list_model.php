@@ -56,7 +56,7 @@ class Job_list_model extends CI_Model
                 JS.job_status_name,
                 P.position_name,
                 OP.pos_num,
-                L.ward_name,
+                L.ward_name1,
                 JT.type_name,
                 OP.n_open,
                 OP.salary,
@@ -69,7 +69,8 @@ class Job_list_model extends CI_Model
                 OP.interview_date,
                 OP.interview_result_date,
                 OP.remark,
-                OP.view_count
+                OP.view_count,
+                OP.public_date
             from open_position as OP
             inner join tb_job_type as JT
             on OP.job_type_id = JT.id
@@ -87,7 +88,7 @@ class Job_list_model extends CI_Model
             $data['job_status_name'] = $value['job_status_name'];
             $data['position_name'] = $value['position_name'];
             $data['pos_num'] = $value['pos_num'];
-            $data['ward_name'] = $value['ward_name'];
+            $data['ward_name1'] = $value['ward_name1'];
             $data['type_name'] = $value['type_name'];
             $data['n_open'] = $value['n_open'];
             $data['salary'] = $value['salary'];
@@ -101,6 +102,29 @@ class Job_list_model extends CI_Model
             $data['interview_result_date'] = $value['interview_result_date'];
             $data['remark'] = $value['remark'];
             $data['view_count'] = $value['view_count'];
+            $data['public_date'] = $value['public_date'];
+        }
+
+        if ($data['end_date'] != null) {
+            $data['end_date'] = date('m-d-Y',  strtotime($data['end_date']));
+        }
+        if ($data['announce_name_date'] != null) {
+            $data['announce_name_date'] = date('m-d-Y',  strtotime($data['announce_name_date']));
+        }
+        if ($data['exam_date'] != null) {
+            $data['exam_date'] = date('m-d-Y',  strtotime($data['exam_date']));
+        }
+        if ($data['exam_result_date'] != null) {
+            $data['exam_result_date'] = date('m-d-Y',  strtotime($data['exam_result_date']));
+        }
+        if ($data['interview_date'] != null) {
+            $data['interview_date'] = date('m-d-Y',  strtotime($data['interview_date']));
+        }
+        if ($data['interview_result_date'] != null) {
+            $data['interview_result_date'] = date('m-d-Y',  strtotime($data['interview_result_date']));
+        }
+        if ($data['public_date'] != null) {
+            $data['public_date'] = date('m-d-Y',  strtotime($data['public_date']));
         }
         // echo "<pre>" ;
         // var_dump($data);
@@ -109,26 +133,29 @@ class Job_list_model extends CI_Model
         return $data;
     }
 
-    public function update_view_count($job_id){
+    public function update_view_count($job_id)
+    {
         // $this->db->query(
         //     "update open_position
         //     set view_count = view_count+1
         //     where id='".$job_id."'"
         // )->result();
-        $this->db->set('view_count','view_count+1',FALSE);
-        $this->db->where('id',$job_id);
+        $this->db->set('view_count', 'view_count+1', FALSE);
+        $this->db->where('id', $job_id);
         $update = $this->db->update('open_position');
-        return $update ;
+        return $update;
     }
 
-    public function get_job_type(){
+    public function get_job_type()
+    {
         $this->db->select('*');
         $this->db->from('tb_job_type');
         $data = $this->db->get();
         return $data->result();
     }
 
-    public function get_job_position(){
+    public function get_job_position()
+    {
         $this->db->select('position_code, position_name');
         $this->db->from('tb_position');
         $this->db->order_by('position_code');
@@ -136,7 +163,8 @@ class Job_list_model extends CI_Model
         return $data->result();
     }
 
-    public function get_ward(){
+    public function get_ward()
+    {
         $this->db->select('ward_code, ward_name1');
         $this->db->from('tb_location1');
         $this->db->order_by('ward_code');

@@ -46,7 +46,7 @@ $this->load->view('layouts/header');
                                                     </div>
                                                     <div class="col-2" style="padding-left: 0px">
                                                         <label>ตำแหน่งเลขที่:</label> <span class="text-danger">*</span>
-                                                        <input name="pos_num" id="pos_num" type="text" class="form-control input-default" placeholder="ตำแหน่งเลขที่">
+                                                        <input name="pos_num" id="pos_num" type="text" class="form-control input-default" placeholder="ตำแหน่งเลขที่" value="<?php echo $data['pos_num'] ?>">
                                                     </div>
                                                     <div class="col-2">
                                                         <label>ประเภท:</label> <span class="text-danger">*</span>
@@ -56,7 +56,11 @@ $this->load->view('layouts/header');
                                                                     <option value="">กรุณาเลือกประเภท</option>
                                                                     <?php
                                                                     foreach ($job_type as $key) {
-                                                                        echo "<option value='" . $key->id . "'>" . $key->type_name . "</option>";
+                                                                        if ($key->type_name == $data['type_name']) {
+                                                                            echo "<option value='" . $key->id . "' selected='selected'>" . $key->type_name . "</option>";
+                                                                        } else {
+                                                                            echo "<option value='" . $key->id . "'>" . $key->type_name . "</option>";
+                                                                        }
                                                                     }
                                                                     ?>
                                                                 </select>
@@ -71,7 +75,11 @@ $this->load->view('layouts/header');
                                                                     <option value="">กรุณาเลือกตำแหน่ง</option>
                                                                     <?php
                                                                     foreach ($job_position as $key) {
-                                                                        echo "<option value='" . $key->position_code . "'> " . $key->position_code . " - " . $key->position_name . "</option>";
+                                                                        if ($key->position_name == $data['position_name']) {
+                                                                            echo "<option value='" . $key->position_code . "' selected='selected'> " . $key->position_code . " - " . $key->position_name . "</option>";
+                                                                        } else {
+                                                                            echo "<option value='" . $key->position_code . "'> " . $key->position_code . " - " . $key->position_name . "</option>";
+                                                                        }
                                                                     }
                                                                     ?>
                                                                 </select>
@@ -86,7 +94,11 @@ $this->load->view('layouts/header');
                                                                     <option value="">กรุณาเลือกหน่วยงาน</option>
                                                                     <?php
                                                                     foreach ($ward as $key) {
-                                                                        echo "<option value='" . $key->ward_code . "'> " . $key->ward_code . " - " . $key->ward_name1 . "</option>";
+                                                                        if ($key->ward_name1 == $data['ward_name1']) {
+                                                                            echo "<option value='" . $key->ward_code . "' selected='selected'> " . $key->ward_code . " - " . $key->ward_name1 . "</option>";
+                                                                        } else {
+                                                                            echo "<option value='" . $key->ward_code . "'> " . $key->ward_code . " - " . $key->ward_name1 . "</option>";
+                                                                        }
                                                                     }
                                                                     ?>
                                                                 </select>
@@ -100,11 +112,11 @@ $this->load->view('layouts/header');
                                                     </div>
                                                     <div class="col-2" style="padding-left: 0px">
                                                         <label>อัตราจ้าง:</label> <span class="text-danger">*</span>
-                                                        <input id="salary" name="salary" type="number" class="form-control input-default" placeholder="อัตราจ้าง">
+                                                        <input id="salary" name="salary" type="number" class="form-control input-default" placeholder="อัตราจ้าง" value="<?php echo $data['salary'] ?>">
                                                     </div>
                                                     <div class="col-2">
                                                         <label>จำนวนที่ว่าง:</label> <span class="text-danger">*</span>
-                                                        <input name="avialable" id="avialable" type="number" class="form-control input-default" placeholder="จำนวนที่ว่าง">
+                                                        <input name="avialable" id="avialable" type="number" class="form-control input-default" placeholder="จำนวนที่ว่าง" value="<?php echo $data['n_open'] ?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -140,7 +152,7 @@ $this->load->view('layouts/header');
                                                             <div class="row">
                                                                 <div class="col-4" style=" align-items: center ; display: flex;">
                                                                     <div class="col-sm-2">
-                                                                        <input onclick="is_exam_change(this)" name="is_exam" id="is_exam" type="checkbox" class="form-check-input" id="is_exam" style="outline: 1px solid #1e5180">
+                                                                        <input onclick="is_exam_change(this)" <?php if ($data['is_exam'] != 0) echo "checked"; ?> name="is_exam" id="is_exam" type="checkbox" class="form-check-input" id="is_exam" style="outline: 1px solid #1e5180">
                                                                     </div>
                                                                     <div class="col-sm-10" style="padding-top:23px">
                                                                         <lable>มีการสอบข้อเขียน</label>
@@ -149,13 +161,13 @@ $this->load->view('layouts/header');
                                                                 <div class="col-4">
                                                                     <label>วันที่สอบ:</label>
                                                                     <div class="input-group">
-                                                                        <input name="exam_date" id="exam_date" type="text" class="form-control complex-colorpicker datepicker-autoclose" id="exam_date" placeholder="mm/dd/yyyy" disabled> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
+                                                                        <input name="exam_date" id="exam_date" type="text" class="form-control complex-colorpicker datepicker-autoclose" id="exam_date" placeholder="mm/dd/yyyy" <?php if ($data['is_exam'] == 0) echo "disabled"; ?>> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-4">
                                                                     <label>วันที่ประกาศผล:</label>
                                                                     <div class="input-group">
-                                                                        <input name="exam_announce_date" id="exam_announce_date" type="text" class="form-control complex-colorpicker datepicker-autoclose" id="exam_announce_date" placeholder="mm/dd/yyyy" disabled> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
+                                                                        <input name="exam_announce_date" id="exam_announce_date" type="text" class="form-control complex-colorpicker datepicker-autoclose" id="exam_announce_date" placeholder="mm/dd/yyyy"  <?php if ($data['is_exam'] == 0) echo "disabled"; ?>>  <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -164,7 +176,7 @@ $this->load->view('layouts/header');
                                                             <div class="row">
                                                                 <div class="col-4" style=" align-items: center ; display: flex;">
                                                                     <div class="col-sm-2">
-                                                                        <input onclick="is_interview_change(this)" name="is_interview" id="is_interview" type="checkbox" class="form-check-input" id="is_interview" style="outline: 1px solid #1e5180">
+                                                                        <input onclick="is_interview_change(this)"  <?php if ($data['is_exam'] != 0) echo "checked"; ?> name="is_interview" id="is_interview" type="checkbox" class="form-check-input" id="is_interview" style="outline: 1px solid #1e5180">
                                                                     </div>
                                                                     <div class="col-sm-10" style="padding-top:23px">
                                                                         <lable>มีการสอบสัมภาษณ์</label>
@@ -173,13 +185,13 @@ $this->load->view('layouts/header');
                                                                 <div class="col-4">
                                                                     <label>วันที่สอบ:</label>
                                                                     <div class="input-group">
-                                                                        <input name="interview_date" id="interview_date" type="text" class="form-control complex-colorpicker datepicker-autoclose" id="interview_date" placeholder="mm/dd/yyyy" disabled> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
+                                                                        <input name="interview_date" id="interview_date" type="text" class="form-control complex-colorpicker datepicker-autoclose" id="interview_date" placeholder="mm/dd/yyyy"  <?php if ($data['is_exam'] == 0) echo "disabled"; ?>> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-4">
                                                                     <label>วันที่ประกาศผล:</label>
                                                                     <div class="input-group">
-                                                                        <input name="announce_interview_date" id="announce_interview_date" type="text" class="form-control complex-colorpicker datepicker-autoclose" id="interview_announce_date" placeholder="mm/dd/yyyy" disabled> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
+                                                                        <input name="announce_interview_date" id="announce_interview_date" type="text" class="form-control complex-colorpicker datepicker-autoclose" id="interview_announce_date" placeholder="mm/dd/yyyy"  <?php if ($data['is_exam'] == 0) echo "disabled"; ?>> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -188,7 +200,7 @@ $this->load->view('layouts/header');
                                                     <!-- หมายเหตุ -->
                                                     <div class="col-5">
                                                         <label>หมายเหตุ:</label>
-                                                        <textarea name="remark" id="remark" class="form-control h-150px" rows="11" ></textarea>
+                                                        <textarea name="remark" id="remark" class="form-control h-150px" rows="11" ><?php echo $data['remark']; ?></textarea>
                                                     </div>
                                                     <div class="col-1"></div>
                                                 </div>
@@ -262,7 +274,7 @@ $this->load->view('layouts/header');
 
     <?php
     $this->load->view('layouts/_script');
-    $this->load->view('layouts/forms/_job_detail_form');
+    $this->load->view('layouts/forms/_edit_job_form');
     ?>
 </body>
 

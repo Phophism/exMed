@@ -3,7 +3,7 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label"></li>
                     <li>
-                        <a href="<?php echo base_url(); ?>/Job_list" aria-expanded="false">
+                        <a href="<?php echo base_url(); ?>Job_list" aria-expanded="false">
                             <i class="icon-notebook menu-icon"></i><span class="nav-text">ประกาศรับสมัครพนักงาน</span>
                         </a>
                     </li>

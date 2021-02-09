@@ -6,14 +6,78 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        // end date
         $(function() {
-            $('.datepicker-autoclose').datepicker({
+            $('#end_date').datepicker({
                 autoclose: true,
                 todayHighlight: true
             });
+            $("#end_date").datepicker("setDate", '<?php echo $data['end_date']; ?>');
         });
+
+        // announce name date
+        $(function() {
+            $('#announce_name_date').datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+            $("#announce_name_date").datepicker("setDate", '<?php echo $data['announce_name_date']; ?>');
+        });
+
+        // exam date
+        $(function() {
+            $('#exam_date').datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+            $("#exam_date").datepicker("setDate", '<?php echo $data['exam_date']; ?>');
+        });
+
+        // exam_announce_date
+        $(function() {
+            $('#exam_announce_date').datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+            $("#exam_announce_date").datepicker("setDate", '<?php echo $data['exam_result_date']; ?>');
+        });
+
+        // interview_date
+        $(function() {
+            $('#interview_date').datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+            $("#interview_date").datepicker("setDate", '<?php echo $data['interview_date']; ?>');
+        });
+
+        //announce_interview_date
+        $(function() {
+            $('#announce_interview_date').datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+            $("#announce_interview_date").datepicker("setDate", '<?php echo $data['interview_result_date']; ?>');
+        });
+
+        //public date
+        $(function() {
+            $('#public_date').datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+            $("#public_date").datepicker("setDate", '<?php echo $data['public_date']; ?>');
+        });
+
+        // $(function() {
+        //     $('.datepicker-autoclose').datepicker({
+        //         autoclose: true,
+        //         todayHighlight: true
+        //     });
+        // });
     });
 </script>
+
 
 <script type="text/javascript">
     $(".form-validate").validate({

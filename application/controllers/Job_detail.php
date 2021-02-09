@@ -36,6 +36,11 @@ class Job_detail extends CI_Controller{
         redirect('Job_detail/index/'.$job_id);
     }
 
+    public function Edit_id(){
+        $job_id=$this->uri->segment(3); 
+        redirect('CRUD/Edit_job/index/'.$job_id);
+    }
+
 }
 
 ?>

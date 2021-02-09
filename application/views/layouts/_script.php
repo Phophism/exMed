@@ -34,17 +34,6 @@
 <script src="<?php echo base_url(); ?>assets/quixlab/plugins/validation/jquery.validate.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/quixlab/plugins/validation/jquery.validate-init.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $(function() {
-            $('.datepicker-autoclose').datepicker({
-                autoclose: true,
-                todayHighlight: true
-            });
-        });
-    });
-</script>
-
 <!-- Datatable script -->
 <script type="text/javascript">
     $("#mydatatable").DataTable({

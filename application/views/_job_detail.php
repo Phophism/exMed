@@ -44,7 +44,7 @@ $this->load->view('layouts/header');
                                     <h3> &ensp; <?php  echo $data['position_name']; ?></h3>
                                 </div>
                                 <div class="col-2">
-                                    <button type="button" class="btn mb-1 btn-rounded btn-outline-warning" style="margin-right:10px">แก้ไข</button>
+                                    <button onclick="location.href = '<?php echo base_url() ?>Job_detail/Edit_id/<?php echo $data['id'] ?>'" type="button" class="btn mb-1 btn-rounded btn-outline-warning" style="margin-right:10px">แก้ไข</button>
                                     <button type="button" class="btn mb-1 btn-rounded btn-outline-danger">ลบ</button>
                                 </div>
                             </div>
