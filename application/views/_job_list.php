@@ -13,18 +13,6 @@ $this->load->view('layouts/header');
 
     <!-- part2 -->
 
-    <!--*******************
-        Preloader start
-    ********************-->
-
-    <div id="preloader" style="display: none;">
-        <div class="loader">
-            <svg class="circular" viewBox="25 25 50 50">
-                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"></circle>
-            </svg>
-        </div>
-    </div>
-
     <!-- nav bar -->
     <?php
     $this->load->view('layouts/nav');
@@ -47,7 +35,7 @@ $this->load->view('layouts/header');
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Data Table</h4>
+                            <h4 class="card-title" style="justify-content: center ; align-items: center ; display: flex;">ประกาศรับสมัครพนักงาน</h4>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration" id="mydatatable">
                                     <thead>

@@ -1,3 +1,6 @@
+<!-- main wrapper -->
+</div>
+
 <!-- JS -->
 <!-- quixlab js -->
 <script src="<?php echo base_url(); ?>assets/quixlab/plugins/common/common.min.js"></script>
@@ -31,45 +34,42 @@
 <script src="<?php echo base_url(); ?>assets/quixlab/plugins/validation/jquery.validate.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/quixlab/plugins/validation/jquery.validate-init.js"></script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(function() {
+            $('.datepicker-autoclose').datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+    });
+</script>
+
 <!-- Datatable script -->
 <script type="text/javascript">
     $("#mydatatable").DataTable({
         "order": [
             [0, "desc"]
-        ], // array[1] (public date Desc)
+        ], // array[0] (public date Desc)
         language: {
             searchPlaceholder: "[กรอกข้อความเพื่อค้นหา]"
         }
     });
+
+    $('input[type="checkbox"]').change(function() {
+        this.value = (Number(this.checked));
+    });
 </script>
 
-<!-- Redirect to detail script -->
 <script type="text/javascript">
-    function trigger_counter(id) {
-        var id = id;
-        $.ajax({
-            type: "POST",
-            url: "<?php echo base_url() ?>Job_detail/index",
-            data: {
-                'id': id
-            },
-            success: function(response) {
-                console.log(response);
-            }
-        });
+    updateFile = function() {
+        var input = document.getElementById('fileupload');
+        var output = document.getElementById('filepath');
+        var children = "";
+        for (var i = 0; i < input.files.length; ++i) {
+            children += '<li>' + input.files.item(i).name + '</li>';
+        }
+        output.innerHTML = '<ul>' + children + '</ul>';
     }
 </script>
-
-<!-- <script type="text/javascript">
-    $(document).ready(function() {
-        $(function() {
-            $('#datepicker-autoclose').datepicker({
-                autoclose: true,
-                todayHighlight: true
-            });
-
-        });
-    });
-</script> -->
-
 <!-- Redirect to detail script -->
