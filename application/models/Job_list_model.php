@@ -104,7 +104,9 @@ class Job_list_model extends CI_Model
             $data['view_count'] = $value['view_count'];
             $data['public_date'] = $value['public_date'];
         }
-
+        // echo "<pre>";
+        //     var_dump($data);
+        //     echo "</pre>";
         if ($data['end_date'] != null) {
             $data['end_date'] = date('m-d-Y',  strtotime($data['end_date']));
         }
@@ -172,6 +174,33 @@ class Job_list_model extends CI_Model
         return $data->result();
     }
 
+    public function add_job($data)
+    {
+        return $this->db->insert('open_position', $data);
+    }
+
+    public function get_latest_job()
+    {
+        $id = $this->db->query("
+            select id
+            from open_position
+            order by id desc
+            limit 1
+        ")->result_array();
+
+        $job_id = 0;
+        foreach ($id as $key) {
+            foreach ($key as $value) {
+                $job_id = (int) $value;
+            }
+        }
+        return $job_id;
+    }
+
+    public function delete_job($id){
+        $this->db->where('id',$id);
+        return $this->db->delete('open_position');
+    }
 
     // Get number of data in "open_position"
     // public function get_open_position_nrow()

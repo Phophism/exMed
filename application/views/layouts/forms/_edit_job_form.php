@@ -35,11 +35,11 @@
 
         // exam_announce_date
         $(function() {
-            $('#exam_announce_date').datepicker({
+            $('#exam_result_date').datepicker({
                 autoclose: true,
                 todayHighlight: true
             });
-            $("#exam_announce_date").datepicker("setDate", '<?php echo $data['exam_result_date']; ?>');
+            $("#exam_result_date").datepicker("setDate", '<?php echo $data['exam_result_date']; ?>');
         });
 
         // interview_date
@@ -53,11 +53,11 @@
 
         //announce_interview_date
         $(function() {
-            $('#announce_interview_date').datepicker({
+            $('#interview_result_date').datepicker({
                 autoclose: true,
                 todayHighlight: true
             });
-            $("#announce_interview_date").datepicker("setDate", '<?php echo $data['interview_result_date']; ?>');
+            $("#interview_result_date").datepicker("setDate", '<?php echo $data['interview_result_date']; ?>');
         });
 
         //public date
@@ -87,19 +87,19 @@
                 // minlength: 7,
                 // maxlength: 7
             },
-            "job_type": {
+            "job_type_id": {
                 required: !0,
             },
-            "job_name": {
+            "pos_id": {
                 required: !0,
             },
-            "ward": {
+            "unit_id": {
                 required: !0,
             },
             "salary": {
                 required: !0,
             },
-            "avialable": {
+            "n_open": {
                 required: !0,
             },
         },
@@ -109,11 +109,11 @@
                 // minlength: "กรุณาระบุให้ครบ 7 ตัวอักษร",
                 // maxlength: "กรุณาระบุเลขที่ตำแหน่ง 7 ตัวอักษร",
             },
-            "job_type": "กรุณาระบุประเภทการจ้าง",
-            "job_name": "กรุณาระบุตำแหน่ง",
-            "ward": "กรุณาระบุหน่วยงาน",
+            "job_type_id": "กรุณาระบุประเภทการจ้าง",
+            "pos_id": "กรุณาระบุตำแหน่ง",
+            "unit_id": "กรุณาระบุหน่วยงาน",
             "salary": "กรุณาระบุอัตราจ้าง",
-            "avialable": "กรุณาระบุจำนวนที่ว่าง",
+            "n_open": "กรุณาระบุจำนวนที่ว่าง",
         },
     });
 </script>
@@ -129,13 +129,13 @@
         if (termsCheckBox.checked) {
             //Set the disabled property to FALSE and enable the button.
             document.getElementById("exam_date").disabled = false;
-            document.getElementById("exam_announce_date").disabled = false;
+            document.getElementById("exam_result_date").disabled = false;
         } else {
             //Otherwise, disable the submit button.
             document.getElementById("exam_date").disabled = true;
-            document.getElementById("exam_announce_date").disabled = true;
+            document.getElementById("exam_result_date").disabled = true;
             document.getElementById("exam_date").value = "";
-            document.getElementById("exam_announce_date").value = "";
+            document.getElementById("exam_result_date").value = "";
         }
     }
 
@@ -144,13 +144,13 @@
         if (termsCheckBox.checked) {
             //Set the disabled property to FALSE and enable the button.
             document.getElementById("interview_date").disabled = false;
-            document.getElementById("announce_interview_date").disabled = false;
+            document.getElementById("interview_result_date").disabled = false;
         } else {
             //Otherwise, disable the submit button.
             document.getElementById("interview_date").disabled = true;
-            document.getElementById("announce_interview_date").disabled = true;
+            document.getElementById("interview_result_date").disabled = true;
             document.getElementById("interview_date").value = "";
-            document.getElementById("announce_interview_date").value = "";
+            document.getElementById("interview_result_date").value = "";
         }
     }
 </script>

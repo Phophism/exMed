@@ -41,11 +41,30 @@ $this->load->view('layouts/header');
                                 </div>
                                 <div class="col-8" style="justify-content: center ; align-items: center ; display: flex;">
                                     <h2><?php echo $data['pos_num']; ?>&ensp; - </h2>
-                                    <h3> &ensp; <?php  echo $data['position_name']; ?></h3>
+                                    <h3> &ensp; <?php echo $data['position_name']; ?></h3>
                                 </div>
                                 <div class="col-2">
-                                    <button onclick="location.href = '<?php echo base_url() ?>Job_detail/Edit_id/<?php echo $data['id'] ?>'" type="button" class="btn mb-1 btn-rounded btn-outline-warning" style="margin-right:10px">แก้ไข</button>
-                                    <button type="button" class="btn mb-1 btn-rounded btn-outline-danger">ลบ</button>
+                                    <button type="button" onclick="location.href = '<?php echo base_url() ?>Job_detail/Edit_id/<?php echo $data['id'] ?>'" 
+                                    class="btn mb-1 btn-rounded btn-outline-warning" style="margin-right:10px">แก้ไข</button>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn mb-1 btn-rounded btn-outline-danger" data-toggle="modal" data-target="#basicModal">ลบ</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="basicModal">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">ยืนยันการลบ</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">คุณต้องการลบประกาศของตำแหน่ง " <?php echo $data['pos_num'] . " - " . $data['position_name'] ?> " ใช่หรือไม่?</div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-light" data-dismiss="modal">ยกเลิก</button>
+                                                    <button type="button" onclick="location.href = '<?php echo base_url() ?>Job_detail/Edit_id/<?php echo $data['id'] ?>'" class="btn btn-danger">ยืนยัน</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <hr>

@@ -22,9 +22,9 @@ class Edit_job extends CI_Controller{
         $ward_list = $this->job_list_model->get_ward();
         
                 
-        echo "<pre>" ;
-        var_dump($data);
-        echo "</pre>";
+        // echo "<pre>" ;
+        // var_dump($data);
+        // echo "</pre>";
 
         $this->load->view('CRUD/_edit_job', 
         array(
