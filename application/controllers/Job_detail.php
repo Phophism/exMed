@@ -61,9 +61,9 @@ class Job_detail extends CI_Controller
             $data['remark'] = " - ";
         }
 
-        echo "<pre>";
-        var_dump($files);
-        echo "</pre>";
+        // echo "<pre>";
+        // var_dump($files);
+        // echo "</pre>";
 
         $this->load->view(
             '_job_detail',

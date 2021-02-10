@@ -51,6 +51,23 @@
 </script>
 
 <script type="text/javascript">
+    $("#clicker").click(function(e) {
+        var hidClicked = e.currentTarget.data("id"); // retrieve the hid by data attr.
+        $.ajax({
+            type: "POST",
+            url: "<?php base_url(); ?>CRUD/Edit_job/delete_file",
+            data: {
+                hid: hidClicked
+            }, // pass it as POST parameter
+            success: function(data) {
+                alert("I got a view");
+                console.log(data);
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
     updateFile1 = function() {
         var input = document.getElementById('fileupload-1');
         var output = document.getElementById('filepath-1');

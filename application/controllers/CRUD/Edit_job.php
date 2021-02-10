@@ -24,6 +24,7 @@ class Edit_job extends CI_Controller
         $job_type = $this->job_list_model->get_job_type();
         $job_position = $this->job_list_model->get_job_position();
         $ward_list = $this->job_list_model->get_ward();
+        $files = $this->job_list_model->get_files($job_detail);
 
         if ($data['end_date'] != null) {
             $data['end_date'] = date('m/d/Y',  strtotime($data['end_date']));
@@ -55,6 +56,7 @@ class Edit_job extends CI_Controller
             'CRUD/_edit_job',
             array(
                 'data' => $data,
+                'files' => $files,
                 'job_type' => $job_type,
                 'job_position' => $job_position,
                 'ward' => $ward_list,
@@ -185,5 +187,11 @@ class Edit_job extends CI_Controller
         $this->job_list_model->update_job($id, $val);
 
         redirect('Job_detail/index/' . $id);
+    }
+
+    public function delete_file(){
+        $id = $this->input->post("id");
+        echo $id;
+        $this->job_list_model->delete_file($id);
     }
 }

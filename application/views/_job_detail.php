@@ -65,7 +65,7 @@ $this->load->view('layouts/header');
                                                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body">คุณต้องการลบประกาศของตำแหน่ง " <?php echo $data['pos_num'] . " - " . $data['position_name'] ?> " ใช่หรือไม่?</div>
+                                                <div class="modal-body">คุณต้องการลบประกาศของตำแหน่ง " <?php echo "<br>".$data['pos_num'] . " - " . $data['position_name'] ;?> " ใช่หรือไม่?</div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-light" data-dismiss="modal">ยกเลิก</button>
                                                     <button type="button" onclick="location.href = '<?php echo base_url() ?>CRUD/Delete_job/index/<?php echo $data['id'] ?>'" class="btn btn-danger">ยืนยัน</button>
@@ -290,6 +290,7 @@ $this->load->view('layouts/header');
                                                     <tr>
                                                         <th class="text-center">ชื่อเอกสาร</th>
                                                         <th class="text-center">วันที่ประกาศ</th>
+                                                        <th class="text-center">ดาวน์โหลด</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -298,13 +299,23 @@ $this->load->view('layouts/header');
                                                     ?>
                                                         <tr>
                                                             <td>
-                                                                <div class="text-center" >
-                                                                    <a href="<?php echo base_url().$file->file_path;?>" target="_blank"> <?php echo $file->file_name; ?> </a>
+                                                                <div class="text-center">
+                                                                    <?php echo $file->file_name; ?>
                                                                 </div>
                                                             </td>
                                                             <td>
                                                                 <div class="text-center">
                                                                     <?php echo date('d/m/Y', strtotime($file->upload_date)); ?>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-center">
+                                                                    <a href="<?php echo base_url() . $file->file_path; ?>" target="_blank">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16" href="<?php echo base_url() . $file->file_path; ?>">
+                                                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                                                        </svg>
+                                                                    </a>
                                                                 </div>
                                                             </td>
                                                         </tr>

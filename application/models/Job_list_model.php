@@ -212,4 +212,10 @@ class Job_list_model extends CI_Model
         return $files;
     }
 
+    public function delete_file($id){
+        $this->db->set('is_active', '0');
+        $this->db->where('id', $id);
+        $this->db->update("open_position_files");
+    }
+
 }
