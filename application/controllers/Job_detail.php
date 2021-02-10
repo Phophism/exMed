@@ -8,7 +8,7 @@ class Job_detail extends CI_Controller
         parent::__construct();
 
         date_default_timezone_set("Asia/Bangkok");
-        $this->load->model('Job_list_model');
+        $this->load->model('job_list_model');
         $this->load->helper('url');
     }
 
@@ -18,7 +18,9 @@ class Job_detail extends CI_Controller
         //$get_id = $this->input->post('id');
 
         $job_detail = $this->uri->segment(3);
-        $data = $this->Job_list_model->get_job_detail($job_detail);
+        $data = $this->job_list_model->get_job_detail($job_detail);
+        $files = $this->job_list_model->get_files($job_detail);
+
 
         if ($data['end_date'] != null) {
             $data['end_date'] = date('d/m/Y',  strtotime($data['end_date']));
@@ -59,14 +61,15 @@ class Job_detail extends CI_Controller
             $data['remark'] = " - ";
         }
 
-        // echo "<pre>";
-        // var_dump($data);
-        // echo "</pre>";
+        echo "<pre>";
+        var_dump($files);
+        echo "</pre>";
 
         $this->load->view(
             '_job_detail',
             array(
                 'data' => $data,
+                'files' => $files,
                 'title' => $data['pos_num'] . " - " . $data['position_name']
             )
         );
@@ -75,7 +78,7 @@ class Job_detail extends CI_Controller
     public function counter()
     {
         $job_id = $this->uri->segment(3);
-        $this->Job_list_model->update_view_count($job_id);
+        $this->job_list_model->update_view_count($job_id);
         redirect('Job_detail/index/' . $job_id);
     }
 

@@ -37,13 +37,13 @@ $this->load->view('layouts/header');
                         <div class="card-body">
                             <h4 class="card-title" style="justify-content: center ; align-items: center ; display: flex;">ประกาศรับสมัครพนักงาน</h4>
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered zero-configuration" id="mydatatable">
+                                <table class="table table-striped table-hover table-bordered zero-configuration" id="mydatatable">
                                     <thead>
                                         <tr>
                                             <th class="text-center">วันที่ประกาศ</th>
-                                            <th class="text-center">วันที่สิ้นสุด</th>
-                                            <th class="text-center">ประเภท</th>
+                                            <th class="text-center">เลขที่ตำแหน่ง</th>
                                             <th class="text-center">ตำแหน่ง</th>
+                                            <th class="text-center">ประเภท</th>
                                             <th class="text-center">หน่วยงาน</th>
                                             <th class="text-center">จำนวน</th>
                                             <th class="text-center">อัตราจ้าง</th>
@@ -66,17 +66,17 @@ $this->load->view('layouts/header');
                                                 </td>
                                                 <td>
                                                     <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
-                                                        <?php echo $detail->end_date; ?>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
-                                                        <?php echo $detail->type_name; ?>
+                                                        <?php echo $detail->pos_num; ?>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->position_name; ?>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
+                                                        <?php echo $detail->type_name; ?>
                                                     </div>
                                                 </td>
                                                 <td>

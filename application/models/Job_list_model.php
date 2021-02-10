@@ -195,11 +195,21 @@ class Job_list_model extends CI_Model
         $data = array (
             'file_name' => $name,
             'file_path' => $path,
-            'pos_num' => $id,
+            'open_pos_id' => $id,
         );
-           echo "<pre>";
-        var_dump($data);
-        echo "</pre>";
+        //    echo "<pre>";
+        // var_dump($data);
+        // echo "</pre>";
         return $this->db->insert('open_position_files',$data);
     }
+
+    public function get_files($id){
+        $this->db->select('*');
+        $this->db->from('open_position_files');
+        $this->db->where('open_pos_id',$id);
+        $this->db->where('is_active','1');
+        $files = $this->db->get()->result();
+        return $files;
+    }
+
 }

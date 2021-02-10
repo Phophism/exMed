@@ -76,6 +76,8 @@ $this->load->view('layouts/header');
                                 </div>
                             </div>
                             <hr>
+
+                            <h4 class="card-title">ข้อมูลประกาศ</h4>
                             <br>
                             <lable>
                                 <div class="row">
@@ -274,27 +276,66 @@ $this->load->view('layouts/header');
                             <div class="col-12">
                                 <br>
                                 <hr>
-                                <br>
+                                <h4 class="card-title">เอกสารประกาศ</h4>
                             </div>
 
-                            <div class="col-12">
-                                <br>
-                                <hr>
-                                <br>
-                            </div>
+                            <!-- file list -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-4"></div>
+                                    <div class="col-4">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover" style="font-size: 95%">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">ชื่อเอกสาร</th>
+                                                        <th class="text-center">วันที่ประกาศ</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    foreach ($files as $file) {
+                                                    ?>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="text-center" >
+                                                                    <a href="<?php echo base_url().$file->file_path;?>" target="_blank"> <?php echo $file->file_name; ?> </a>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-center">
+                                                                    <?php echo date('d/m/Y', strtotime($file->upload_date)); ?>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-4"></div>
+                                    </div>
+                                </div>
 
-                            <div class="col-12" style="justify-content: center ; align-items: center ; display: flex;">
-                                <button onclick="location.href='<?php echo base_url(); ?>job_list/index'" type="button" class="btn mb-1 btn-rounded btn-info">กลับหน้าหลัก</button>
+                                <div class="col-12">
+                                    <br>
+                                    <hr>
+                                    <br>
+                                </div>
+
+                                <div class="col-12" style="justify-content: center ; align-items: center ; display: flex;">
+                                    <button onclick="location.href='<?php echo base_url(); ?>job_list/index'" type="button" class="btn mb-1 btn-rounded btn-info">กลับหน้าหลัก</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <?php
-    $this->load->view('layouts/_script');
-    ?>
+        <?php
+        $this->load->view('layouts/_script');
+        ?>
 </body>
 
 </html>

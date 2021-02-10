@@ -52,25 +52,6 @@ class Add_job extends CI_Controller
                 }
             }
 
-            // File upload
-            // $info = pathinfo($_FILES["fileupload"]['name']);
-            if (isset($_FILES["file"]['name'])) {
-                $tmp_path = array();
-                $new_path = array();
-                $file_name = array();
-                $total = count($_FILES["file"]['name']);
-                for ($i = 0; $i < $total; $i++) {
-                    $file_name[$i] = $val['pos_num'] . "_" . $_FILES["file"]['name'][$i];
-                    $tmp_path[$i] = $_FILES['file']['tmp_name'][$i];
-                    if ($tmp_path[$i] != "") {
-                        $new_path[$i] = "files/" . $val['pos_num'] . "_" . $_FILES['file']['name'][$i];
-                        //Upload the file into the temp dir
-                        move_uploaded_file($tmp_path[$i], $new_path[$i]);
-                        $this->job_list_model->upload_file($file_name[$i],$new_path[$i],$val['pos_num']);
-                    }
-                }
-            }
-
             // set related date to null if no (exam) test or interview 
             if ($val['is_exam'] == "0") {
                 $val['exam_date'] = null;
@@ -87,35 +68,35 @@ class Add_job extends CI_Controller
 
 
             // Convert date format to mysql date format
-            $val['public_date'] = date('Y-m-d',strtotime($val['public_date']));
-            if(isset($val['end_date']) && $val['end_date'] != null){
-                $val['end_date'] = date('Y-m-d',strtotime($val['end_date']));
+            $val['public_date'] = date('Y-m-d', strtotime($val['public_date']));
+            if (isset($val['end_date']) && $val['end_date'] != null) {
+                $val['end_date'] = date('Y-m-d', strtotime($val['end_date']));
             }
-            if(isset($val['exam_date']) && $val['exam_date'] != null){
-                $val['exam_date'] = date('Y-m-d',strtotime($val['exam_date']));
+            if (isset($val['exam_date']) && $val['exam_date'] != null) {
+                $val['exam_date'] = date('Y-m-d', strtotime($val['exam_date']));
             }
-            if(isset($val['exam_result_date']) && $val['exam_result_date'] != null){
-                $val['exam_result_date'] = date('Y-m-d',strtotime($val['exam_result_date']));
+            if (isset($val['exam_result_date']) && $val['exam_result_date'] != null) {
+                $val['exam_result_date'] = date('Y-m-d', strtotime($val['exam_result_date']));
             }
-            if(isset($val['interview_date']) && $val['interview_date'] != null){
-                $val['interview_date'] = date('Y-m-d',strtotime($val['interview_date']));
+            if (isset($val['interview_date']) && $val['interview_date'] != null) {
+                $val['interview_date'] = date('Y-m-d', strtotime($val['interview_date']));
             }
-            if(isset($val['interview_result_date']) && $val['interview_result_date'] != null){
-                $val['interview_result_date'] = date('Y-m-d',strtotime($val['interview_result_date']));
+            if (isset($val['interview_result_date']) && $val['interview_result_date'] != null) {
+                $val['interview_result_date'] = date('Y-m-d', strtotime($val['interview_result_date']));
             }
-            if(isset($val['announce_name_date']) && $val['announce_name_date'] != null){
-                $val['announce_name_date'] = date('Y-m-d',strtotime($val['announce_name_date']));
+            if (isset($val['announce_name_date']) && $val['announce_name_date'] != null) {
+                $val['announce_name_date'] = date('Y-m-d', strtotime($val['announce_name_date']));
             }
 
 
             // Set job status
-            if( isset($val['interview_result_date']) && $cur_date >= $val['interview_result_date'] ){
+            if (isset($val['interview_result_date']) && $cur_date >= $val['interview_result_date']) {
                 $val['status_id'] = "04";
-            }else if (isset($val['exam_result_date']) && $cur_date >= $val['exam_result_date'] ){
+            } else if (isset($val['exam_result_date']) && $cur_date >= $val['exam_result_date']) {
                 $val['status_id'] = "03";
-            } else if (isset($val['announce_name_date']) && $cur_date >= $val['announce_name_date'] ){
+            } else if (isset($val['announce_name_date']) && $cur_date >= $val['announce_name_date']) {
                 $val['status_id'] = "02";
-            } else if (isset($val['public_date']) && $cur_date >= $val['public_date'] ){
+            } else if (isset($val['public_date']) && $cur_date >= $val['public_date']) {
                 $val['status_id'] = "01";
             } else {
                 $val['status_id'] = "00";
@@ -129,7 +110,26 @@ class Add_job extends CI_Controller
         $this->job_list_model->add_job($val);
         $job_id = $this->job_list_model->get_latest_job();
 
+        // File upload
+        // $info = pathinfo($_FILES["fileupload"]['name']);
+        if (isset($_FILES["file"]['name'])) {
+            $tmp_path = array();
+            $new_path = array();
+            $file_name = array();
+            $total = count($_FILES["file"]['name']);
+            for ($i = 0; $i < $total; $i++) {
+                $file_name[$i] = $val['pos_num'] . "_" . $_FILES["file"]['name'][$i];
+                $tmp_path[$i] = $_FILES['file']['tmp_name'][$i];
+                if ($tmp_path[$i] != "") {
+                    $new_path[$i] = "files/" . $val['pos_num'] . "_" . $_FILES['file']['name'][$i];
+                    //Upload the file into the temp dir
+                    move_uploaded_file($tmp_path[$i], $new_path[$i]);
+                    $this->job_list_model->upload_file($file_name[$i], $new_path[$i], $job_id);
+                }
+            }
+        }
 
-        redirect('Job_detail/index/'.$job_id);
+
+        redirect('Job_detail/index/' . $job_id);
     }
 }

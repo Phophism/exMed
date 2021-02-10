@@ -57,6 +57,13 @@
             display: block;
             /* remove extra space below image */
         }
+
+        .download-icon {
+            background: url('<?php echo base_url();?>/assets/images/icon/download-button.png');
+            height: 20px;
+            width: 20px;
+            display: block;
+        }
     </style>
 
     <script type="text/javascript">
@@ -69,8 +76,8 @@
                         '<div class="col-4"></div>' +
                         '<div class="col-4">' +
                         '<div class="custom-file">' +
-                        '<input onchange="javascript:updateFile'+ count +'()" type="file" class="custom-file-input" name="file[]"  id="fileupload-'+ count +'">' +
-                        '<label class="custom-file-label filepath" name="filepath-'+ count +'"  id="filepath-'+ count +'" >เลือกไฟล์</label>' +
+                        '<input onchange="javascript:updateFile' + count + '()" type="file" class="custom-file-input" name="file[]"  id="fileupload-' + count + '">' +
+                        '<label class="custom-file-label filepath" name="filepath-' + count + '"  id="filepath-' + count + '" >เลือกไฟล์</label>' +
                         '</div>' +
                         '</div>' +
                         '</div>';
@@ -81,7 +88,7 @@
                         '<div class="col-4">' +
                         '<div class="alert alert-danger alert-dismissible fade show">' +
                         ' <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>' +
-                        ' </button> Upload field has reached maximum amount'+
+                        ' </button> Upload field has reached maximum amount' +
                         '</div>' +
                         '</div>' +
                         '</div>';
