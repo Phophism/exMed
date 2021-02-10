@@ -35,7 +35,7 @@ $this->load->view('layouts/header');
                     <div class="card">
                         <div class="card-body">
                             <div class="basic-form">
-                                <form class="form-validate" action="#" method="post" enctype="multipart/form-data">
+                                <form class="form-validate" action="<?php echo base_url('CRUD/Edit_job/update_job/').$data['id'] ?>" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <h4 class="card-title">รายละเอียดงาน</h4>
                                         <br>
@@ -112,11 +112,11 @@ $this->load->view('layouts/header');
                                                     </div>
                                                     <div class="col-2" style="padding-left: 0px">
                                                         <label>อัตราจ้าง:</label> <span class="text-danger">*</span>
-                                                        <input id="salary" name="salary" type="number" class="form-control input-default" placeholder="อัตราจ้าง" value="<?php echo $data['salary'] ?>">
+                                                        <input id="salary" name="salary" type="number" min="1" class="form-control input-default" placeholder="อัตราจ้าง" value="<?php echo $data['salary'] ?>">
                                                     </div>
                                                     <div class="col-2">
                                                         <label>จำนวนที่ว่าง:</label> <span class="text-danger">*</span>
-                                                        <input name="n_open" id="n_open" type="number" class="form-control input-default" placeholder="จำนวนที่ว่าง" value="<?php echo $data['n_open'] ?>">
+                                                        <input name="n_open" id="n_open" type="number" min="1" class="form-control input-default" placeholder="จำนวนที่ว่าง" value="<?php echo $data['n_open'] ?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -176,7 +176,7 @@ $this->load->view('layouts/header');
                                                             <div class="row">
                                                                 <div class="col-4" style=" align-items: center ; display: flex;">
                                                                     <div class="col-sm-2">
-                                                                        <input onclick="is_interview_change(this)"  <?php if ($data['is_exam'] != 0) echo "checked"; ?> name="is_interview" id="is_interview" type="checkbox" class="form-check-input" style="outline: 1px solid #1e5180">
+                                                                        <input onclick="is_interview_change(this)"  <?php if ($data['is_interview'] != 0) echo "checked"; ?> name="is_interview" id="is_interview" type="checkbox" class="form-check-input" style="outline: 1px solid #1e5180">
                                                                     </div>
                                                                     <div class="col-sm-10" style="padding-top:23px">
                                                                         <lable>มีการสอบสัมภาษณ์</label>
@@ -185,13 +185,13 @@ $this->load->view('layouts/header');
                                                                 <div class="col-4">
                                                                     <label>วันที่สอบ:</label>
                                                                     <div class="input-group">
-                                                                        <input name="interview_date" id="interview_date" type="text" class="form-control complex-colorpicker datepicker-autoclose" placeholder="mm/dd/yyyy"  <?php if ($data['is_exam'] == 0) echo "disabled"; ?>> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
+                                                                        <input name="interview_date" id="interview_date" type="text" class="form-control complex-colorpicker datepicker-autoclose" placeholder="mm/dd/yyyy"  <?php if ($data['is_interview'] == 0) echo "disabled"; ?>> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-4">
                                                                     <label>วันที่ประกาศผล:</label>
                                                                     <div class="input-group">
-                                                                        <input name="interview_result_date" id="interview_result_date" type="text" class="form-control complex-colorpicker datepicker-autoclose" placeholder="mm/dd/yyyy"  <?php if ($data['is_exam'] == 0) echo "disabled"; ?>> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
+                                                                        <input name="interview_result_date" id="interview_result_date" type="text" class="form-control complex-colorpicker datepicker-autoclose" placeholder="mm/dd/yyyy"  <?php if ($data['is_interview'] == 0) echo "disabled"; ?>> <span class="input-group-append"><span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -215,18 +215,15 @@ $this->load->view('layouts/header');
                                             <div class="col-4"></div>
                                             <div class="col-4">
                                                 <div class="custom-file">
-                                                    <input onchange="javascript:updateFile()" type="file" class="custom-file-input" name="fileupload" id="fileupload">
-                                                    <label class="custom-file-label" id="filepath">เลือกไฟล์</label>
+                                                    <input onchange="javascript:updateFile1()" type="file" class="custom-file-input fileupload" name="file[]" id="fileupload-1">
+                                                    <label class="custom-file-label filepath" name="filepath" id="filepath-1">เลือกไฟล์</label>
                                                 </div>
                                             </div>
-                                            <div class="col-4"></div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col" style="justify-content: center ; align-items: center ; display: flex;">
-                                                <button type="button" name="add_file" class="btn mb-1 btn-outline-info">เพิ่มไฟล์</button>
+                                            <div class="col-4">
+                                                <button type="button" name="add_file" class="btn mb-1 btn-outline-info add_more">เพิ่มไฟล์</button>
                                             </div>
                                         </div>
+                                        <div id='newFile'></div>
                                         <br>
                                         <hr>
                                         <br>

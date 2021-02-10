@@ -188,7 +188,7 @@ $this->load->view('layouts/header');
                                                     <!-- หมายเหตุ -->
                                                     <div class="col-5">
                                                         <label>หมายเหตุ:</label>
-                                                        <textarea name="remark" id="remark" class="form-control h-150px" rows="11" ></textarea>
+                                                        <textarea name="remark" id="remark" class="form-control h-150px" rows="11"></textarea>
                                                     </div>
                                                     <div class="col-1"></div>
                                                 </div>
@@ -203,18 +203,15 @@ $this->load->view('layouts/header');
                                             <div class="col-4"></div>
                                             <div class="col-4">
                                                 <div class="custom-file">
-                                                    <input onchange="javascript:updateFile()" type="file" class="custom-file-input" name="fileupload" id="fileupload">
-                                                    <label class="custom-file-label" id="filepath">เลือกไฟล์</label>
+                                                    <input onchange="javascript:updateFile1()" type="file" class="custom-file-input fileupload" name="file[]" id="fileupload-1">
+                                                    <label class="custom-file-label filepath" name="filepath" id="filepath-1">เลือกไฟล์</label>
                                                 </div>
                                             </div>
-                                            <div class="col-4"></div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col" style="justify-content: center ; align-items: center ; display: flex;">
-                                                <button type="button" name="add_file" class="btn mb-1 btn-outline-info">เพิ่มไฟล์</button>
+                                            <div class="col-4">
+                                                <button type="button" name="add_file" class="btn mb-1 btn-outline-info add_more">เพิ่มไฟล์</button>
                                             </div>
                                         </div>
+                                        <div id='newFile'></div>
                                         <br>
                                         <hr>
                                         <br>
@@ -225,7 +222,7 @@ $this->load->view('layouts/header');
                                                     <div class="col-3">
                                                         <div class="row">
                                                             <div class="col-5" style="justify-content: center ; align-items: center ; display: flex;">
-                                                                <label>วันที่เผยแพร่:</label>
+                                                                <label >วันที่เผยแพร่:</label>
                                                             </div>
                                                             <div class="col-7" style="padding-left:0px; ">
                                                                 <div class="input-group">

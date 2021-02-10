@@ -54,18 +54,21 @@ class Add_job extends CI_Controller
 
             // File upload
             // $info = pathinfo($_FILES["fileupload"]['name']);
-            if (isset($_FILES["fileupload"]['name'])) {
-                $target = "files/";
-                $file_name = $val['pos_num'] . "_" . $_FILES["fileupload"]['name'];
-                $temp = $_FILES["fileupload"]['tmp_name'];
-
-                move_uploaded_file($temp, $target . $file_name);
-
-                // if (move_uploaded_file($temp, $target . $file_name)) {
-                //     echo "<script type='text/javascript'> alert('success') </script> ";
-                // } else {
-                //     echo "<script type='text/javascript'> alert('fail') </script> ";
-                // }
+            if (isset($_FILES["file"]['name'])) {
+                $tmp_path = array();
+                $new_path = array();
+                $file_name = array();
+                $total = count($_FILES["file"]['name']);
+                for ($i = 0; $i < $total; $i++) {
+                    $file_name[$i] = $val['pos_num'] . "_" . $_FILES["file"]['name'][$i];
+                    $tmp_path[$i] = $_FILES['file']['tmp_name'][$i];
+                    if ($tmp_path[$i] != "") {
+                        $new_path[$i] = "files/" . $val['pos_num'] . "_" . $_FILES['file']['name'][$i];
+                        //Upload the file into the temp dir
+                        move_uploaded_file($tmp_path[$i], $new_path[$i]);
+                        $this->job_list_model->upload_file($file_name[$i],$new_path[$i],$val['pos_num']);
+                    }
+                }
             }
 
             // set related date to null if no (exam) test or interview 

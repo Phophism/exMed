@@ -51,9 +51,45 @@
 </script>
 
 <script type="text/javascript">
-    updateFile = function() {
-        var input = document.getElementById('fileupload');
-        var output = document.getElementById('filepath');
+    updateFile1 = function() {
+        var input = document.getElementById('fileupload-1');
+        var output = document.getElementById('filepath-1');
+        var children = "";
+        for (var i = 0; i < input.files.length; ++i) {
+            children += '<li>' + input.files.item(i).name + '</li>';
+        }
+        output.innerHTML = '<ul>' + children + '</ul>';
+    }
+    updateFile2 = function() {
+        var input = document.getElementById('fileupload-2');
+        var output = document.getElementById('filepath-2');
+        var children = "";
+        for (var i = 0; i < input.files.length; ++i) {
+            children += '<li>' + input.files.item(i).name + '</li>';
+        }
+        output.innerHTML = '<ul>' + children + '</ul>';
+    }
+    updateFile3 = function() {
+        var input = document.getElementById('fileupload-3');
+        var output = document.getElementById('filepath-3');
+        var children = "";
+        for (var i = 0; i < input.files.length; ++i) {
+            children += '<li>' + input.files.item(i).name + '</li>';
+        }
+        output.innerHTML = '<ul>' + children + '</ul>';
+    }
+    updateFile4 = function() {
+        var input = document.getElementById('fileupload-4');
+        var output = document.getElementById('filepath-4');
+        var children = "";
+        for (var i = 0; i < input.files.length; ++i) {
+            children += '<li>' + input.files.item(i).name + '</li>';
+        }
+        output.innerHTML = '<ul>' + children + '</ul>';
+    }
+    updateFile5 = function() {
+        var input = document.getElementById('fileupload-5');
+        var output = document.getElementById('filepath-5');
         var children = "";
         for (var i = 0; i < input.files.length; ++i) {
             children += '<li>' + input.files.item(i).name + '</li>';
@@ -61,4 +97,7 @@
         output.innerHTML = '<ul>' + children + '</ul>';
     }
 </script>
+
+
+
 <!-- Redirect to detail script -->

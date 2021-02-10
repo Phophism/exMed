@@ -39,13 +39,21 @@ $this->load->view('layouts/header');
                             <div class="row">
                                 <div class="col-2">
                                 </div>
-                                <div class="col-8" style="justify-content: center ; align-items: center ; display: flex;">
-                                    <h2><?php echo $data['pos_num']; ?>&ensp; - </h2>
-                                    <h3> &ensp; <?php echo $data['position_name']; ?></h3>
+                                <div class="col-8">
+                                    <div class="row">
+                                        <div class="col-12" style="justify-content: center ; align-items: center ; display: flex;">
+                                            <h1>รายละเอียดงาน</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12" style="justify-content: center ; align-items: center ; display: flex;">
+                                            <h5><?php echo $data['pos_num']; ?>&ensp; - </h5>
+                                            <h5> &ensp; <?php echo $data['position_name']; ?></h5>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-2">
-                                    <button type="button" onclick="location.href = '<?php echo base_url() ?>Job_detail/Edit_id/<?php echo $data['id'] ?>'" 
-                                    class="btn mb-1 btn-rounded btn-outline-warning" style="margin-right:10px">แก้ไข</button>
+                                    <button type="button" onclick="location.href = '<?php echo base_url() ?>Job_detail/Edit_id/<?php echo $data['id'] ?>'" class="btn mb-1 btn-rounded btn-outline-warning" style="margin-right:10px">แก้ไข</button>
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn mb-1 btn-rounded btn-outline-danger" data-toggle="modal" data-target="#basicModal">ลบ</button>
                                     <!-- Modal -->
@@ -60,7 +68,7 @@ $this->load->view('layouts/header');
                                                 <div class="modal-body">คุณต้องการลบประกาศของตำแหน่ง " <?php echo $data['pos_num'] . " - " . $data['position_name'] ?> " ใช่หรือไม่?</div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-light" data-dismiss="modal">ยกเลิก</button>
-                                                    <button type="button" onclick="location.href = '<?php echo base_url() ?>Job_detail/Edit_id/<?php echo $data['id'] ?>'" class="btn btn-danger">ยืนยัน</button>
+                                                    <button type="button" onclick="location.href = '<?php echo base_url() ?>CRUD/Delete_job/index/<?php echo $data['id'] ?>'" class="btn btn-danger">ยืนยัน</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -71,182 +79,194 @@ $this->load->view('layouts/header');
                             <br>
                             <lable>
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
                                             <b>สถานะ</b>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p>ประกาศผลการคัดลือก</p>
+                                            <p><?php echo $data['job_status_name']; ?></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
                                             <b>ตำแหน่ง</b>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p>พนักงานช่าง</p>
+                                            <p><?php echo $data['position_name']; ?></p>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
                                             <b>ตำแหน่งเลขที่</b>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
                                             <p><?php echo $data['pos_num']; ?></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
                                             <b>หน่วยงาน</b>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p>หน่วยงาน</p>
+                                            <p><?php echo $data['ward_name1']; ?></p>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
                                             <b>ประเภท</b>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p>ประเภท</p>
+                                            <p><?php echo $data['type_name']; ?></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
-                                            <p>จำนวน</p>
+                                            <b>จำนวน</b>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p>จำนวน</p>
+                                            <p><?php echo $data['n_open']; ?></p>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
-                                            <p>อัตราจ้าง</p>
+                                            <b>อัตราจ้าง</b>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p>อัตราจ้าง</p>
+                                            <p><?php echo $data['salary']; ?></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
-                                            <p>รับสมัครถึงวันที่</p>
+                                            <b>รับสมัครถึงวันที่</b>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p>รับสมัครถึงวันที่</p>
+                                            <p><?php echo $data['end_date']; ?></p>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
-                                            <p>วันที่ประกาศ</p>
+                                            <b>วันที่ประกาศ</b>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p>วันที่ประกาศ</p>
+                                            <p><?php echo $data['announce_name_date']; ?></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
-                                            <p>สอบข้อเขียน</p>
+                                            <b>สอบข้อเขียน</b>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p></p>
+                                            <?php
+                                            if ($data['is_exam'] == "1") {
+                                                echo "<p><span>&#10003;</span></p>";
+                                            } else {
+                                                echo "<p> - </p>";
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
-                                            <p>วันที่สอบ</p>
+                                            <b>วันที่สอบ</b>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p>วันที่สอบ</p>
+                                            <p><?php echo $data['exam_date']; ?></p>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
-                                            <p>วันที่ประกาศ</p>
+                                            <b>วันที่ประกาศ</b>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p>วันที่ประกาศ</p>
+                                            <p><?php echo $data['exam_result_date']; ?></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
-                                            <p>สอบสัมภาษณ์</p>
+                                            <b>สอบสัมภาษณ์</b>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p></p>
+                                            <?php
+                                            if ($data['is_interview'] == "1") {
+                                                echo "<p><span>&#10003;</span></p>";
+                                            } else {
+                                                echo "<p> - </p>";
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
-                                            <p>วันที่สอบ</p>
+                                            <b>วันที่สอบ</b>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p>วันที่สอบ</p>
+                                            <p><?php echo $data['interview_date']; ?></p>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
-                                            <p>วันที่ประกาศ</p>
+                                            <b>วันที่ประกาศ</b>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p>วันที่ประกาศ</p>
+                                            <p><?php echo $data['interview_result_date']; ?></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="" style="text-align:right">
-                                            <p>หมายเหตุ</p>
+                                            <b>หมายเหตุ</b>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="" style="text-align:left">
-                                            <p>หมายเหตุ</p>
+                                            <p><?php echo $data['remark']; ?></p>
                                         </div>
                                     </div>
                                 </div>

@@ -13,6 +13,9 @@
     <title><?php echo $title; ?></title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
+    <!-- for multiple file (add button) -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
     <!-- CSS -->
     <!-- quixlab css -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/quixlab/plugins/tables/css/datatable/dataTables.bootstrap4.min.css">
@@ -55,5 +58,37 @@
             /* remove extra space below image */
         }
     </style>
+
+    <script type="text/javascript">
+        var count = 2;
+        $(document).ready(function() {
+            $('.add_more').click(function(e) {
+                var newFile = document.getElementById('newFile');
+                if (count < 6) {
+                    newFile.innerHTML += '<div class="row" style="padding-bottom: 6px;">' +
+                        '<div class="col-4"></div>' +
+                        '<div class="col-4">' +
+                        '<div class="custom-file">' +
+                        '<input onchange="javascript:updateFile'+ count +'()" type="file" class="custom-file-input" name="file[]"  id="fileupload-'+ count +'">' +
+                        '<label class="custom-file-label filepath" name="filepath-'+ count +'"  id="filepath-'+ count +'" >เลือกไฟล์</label>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                    count++;
+                } else if (count < 7) {
+                    newFile.innerHTML += '<div class="row" style="padding-bottom: 6px;">' +
+                        '<div class="col-4"></div>' +
+                        '<div class="col-4">' +
+                        '<div class="alert alert-danger alert-dismissible fade show">' +
+                        ' <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>' +
+                        ' </button> Upload field has reached maximum amount'+
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                    count++;
+                }
+            });
+        });
+    </script>
 
 </head>
