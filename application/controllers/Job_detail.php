@@ -1,4 +1,4 @@
-<?php 
+<?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Job_detail extends CI_Controller
@@ -11,6 +11,7 @@ class Job_detail extends CI_Controller
         date_default_timezone_set("Asia/Bangkok");
         $this->load->model('job_list_model');
         $this->load->helper('url');
+        $this->load->helper('download');
     }
 
     public function index()
@@ -87,5 +88,16 @@ class Job_detail extends CI_Controller
     {
         $job_id = $this->uri->segment(3);
         redirect('CRUD/Edit_job/index/' . $job_id);
+    }
+
+    public function download_count()
+    {
+        $job_id = $this->uri->segment(3);
+        $file_id = $this->uri->segment(4);
+        $file_name = $this->uri->segment(5);
+        $file_path = file_get_contents(base_url() . 'files/' . $file_name);
+        $this->job_list_model->file_download_count($file_id);
+        force_download($file_name, $file_path);
+        redirect('Job_detail/index/' . $job_id);
     }
 }

@@ -110,7 +110,7 @@
                         '<div class="col-4"></div>' +
                         '<div class="col-4">' +
                         '<div class="custom-file">' +
-                        '<input onchange="javascript:updateFile' + count + '()" type="file" class="custom-file-input" name="file[]"  id="fileupload-' + count + '">' +
+                        '<input onchange="javascript:updateFile' + count + '()" type="file" class="custom-file-input" name="file[]"  id="fileupload-' + count + '" accept-charset="UTF-8">' +
                         '<label class="custom-file-label filepath" name="filepath-' + count + '"  id="filepath-' + count + '" >เลือกไฟล์</label>' +
                         '</div>' +
                         '</div>' +

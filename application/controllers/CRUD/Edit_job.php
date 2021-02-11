@@ -1,4 +1,4 @@
-<?php 
+<?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Edit_job extends CI_Controller
@@ -61,7 +61,7 @@ class Edit_job extends CI_Controller
         }
 
         // echo "<pre>" ;
-        // var_dump($data);
+        // var_dump(empty($files));
         // echo "</pre>";
 
         $this->load->view(
@@ -94,37 +94,6 @@ class Edit_job extends CI_Controller
                 } else {
                     $val[$key] = $post;
                 }
-            }
-
-
-            // File upload
-            // $info = pathinfo($_FILES["fileupload"]['name']);
-            if (isset($_FILES["file"]['name'])) {
-                $tmp_path = array();
-                $new_path = array();
-                $fileName = array();
-                $total = count($_FILES["file"]['name']);
-                for ($i = 0; $i < $total; $i++) {
-                    $fileName[$i] = $_FILES["file"]['name'];
-                    $tmp_path[$i] = $_FILES['file']['tmp_name'][$i];
-                    if ($tmp_path[$i] != "") {
-                        $new_path[$i] = "files/" . $val['pos_num'] . "_" . $_FILES['file']['name'][$i];
-                        //Upload the file into the temp dir
-                        move_uploaded_file($tmp_path[$i], $new_path[$i]);
-                    }
-                }
-
-                // $target = "files/";
-                // $file_name = $val['pos_num'] . "_" . $_FILES["fileupload"]['name'];
-                // $temp = $_FILES["fileupload"]['tmp_name'];
-
-                // move_uploaded_file($temp, $target . $file_name);
-
-                // if (move_uploaded_file($temp, $target . $file_name)) {
-                //     echo "<script type='text/javascript'> alert('success') </script> ";
-                // } else {
-                //     echo "<script type='text/javascript'> alert('fail') </script> ";
-                // }
             }
 
             if (!isset($val['is_exam'])) {
@@ -189,6 +158,7 @@ class Edit_job extends CI_Controller
                 $val['status_id'] = "00";
             }
         }
+        $val['last_update_by'] = $this->session->userdata('username');
 
         $val['update_date'] = date('Y-m-d H:i:s');
 
@@ -198,12 +168,34 @@ class Edit_job extends CI_Controller
 
         $this->job_list_model->update_job($id, $val);
 
+
+        // File upload
+        // $info = pathinfo($_FILES["fileupload"]['name']);
+        if (isset($_FILES["file"]['name'])) {
+            $tmp_path = array();
+            $new_path = array();
+            $file_name = array();
+            $total = count($_FILES["file"]['name']);
+            for ($i = 0; $i < $total; $i++) {
+                $file_name[$i] = $val['pos_num'] . "_" . $_FILES["file"]['name'][$i];
+                $tmp_path[$i] = $_FILES['file']['tmp_name'][$i];
+                if ($tmp_path[$i] != "") {
+                    $new_path[$i] = "files/" . $val['pos_num'] . "_" . $_FILES['file']['name'][$i];
+                    //Upload the file into the temp dir
+                    move_uploaded_file($tmp_path[$i], $new_path[$i]);
+                    $this->job_list_model->upload_file($file_name[$i], $new_path[$i], $id);
+                }
+            }
+        }
+
         redirect('Job_detail/index/' . $id);
     }
 
     public function delete_file()
     {
-        $id_post = $this->input->post("id_post");
-        $this->job_list_model->delete_file($id_post);
+        $id_file = $this->uri->segment(4);
+        $id_data = $this->uri->segment(5);
+        $this->job_list_model->delete_file($id_file);
+        redirect('CRUD/Edit_job/index/' . $id_data);
     }
 }

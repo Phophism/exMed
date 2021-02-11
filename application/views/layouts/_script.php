@@ -50,7 +50,7 @@
     });
 </script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(document).ready(function() {
         $(".delete").click(function(e) {
             e.preventDefault();
@@ -71,7 +71,7 @@
             });
         });
     });
-</script>
+</script> -->
 
 <script type="text/javascript">
     updateFile1 = function() {

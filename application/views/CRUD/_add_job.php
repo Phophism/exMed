@@ -216,7 +216,7 @@ $this->load->view('layouts/header');
                                             <div class="col-4"></div>
                                             <div class="col-4">
                                                 <div class="custom-file">
-                                                    <input onchange="javascript:updateFile1()" type="file" class="custom-file-input fileupload" name="file[]" id="fileupload-1">
+                                                    <input onchange="javascript:updateFile1()" type="file" class="custom-file-input fileupload" name="file[]" id="fileupload-1" accept-charset="UTF-8">
                                                     <label class="custom-file-label filepath" name="filepath" id="filepath-1">เลือกไฟล์</label>
                                                 </div>
                                             </div>

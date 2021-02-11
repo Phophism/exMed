@@ -279,11 +279,32 @@ $this->load->view('layouts/header');
                                                                                             <div class="modal-body">คุณต้องการลบไฟล์ " <?php echo $file->file_name; ?> " ใช่หรือไม่?</div>
                                                                                             <div class="modal-footer">
                                                                                                 <button type="button" class="btn btn-light" data-dismiss="modal">ยกเลิก</button>
-                                                                                                <button type="button" onclick="location.href = '<?php echo base_url() ?>CRUD/Edit_job/delete_file/<?php echo $file->id ?>'" class="btn btn-danger delete" data-hid="<?php echo $file->id; ?>">ยืนยัน</button>
+                                                                                                <button type="button" onclick="location.href = '<?php echo base_url() ?>CRUD/Edit_job/delete_file/<?php echo $file->id . '/' . $data['id']; ?>'" class="btn btn-danger delete" data-hid="<?php echo $file->id; ?>">ยืนยัน</button>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php
+                                                                }
+                                                                if (empty($files)) {
+                                                                ?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="text-center">
+                                                                                -
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="text-center">
+                                                                                -
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="text-center">
+                                                                                -
                                                                             </div>
                                                                         </td>
                                                                     </tr>

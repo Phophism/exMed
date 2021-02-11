@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+header('Content-type: text/html; charset=utf-8');
 
 class Add_job extends CI_Controller
 {
@@ -105,6 +106,8 @@ class Add_job extends CI_Controller
                 $val['status_id'] = "00";
             }
         }
+
+        $val['last_update_by'] = $this->session->userdata('username');
 
         // echo "<pre>";
         // var_dump($val);

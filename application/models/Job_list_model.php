@@ -218,4 +218,11 @@ class Job_list_model extends CI_Model
         $this->db->update("open_position_files");
     }
 
+    public function file_download_count($id){
+        $this->db->set('download_count', 'download_count+1', FALSE);
+        $this->db->where('id', $id);
+        $update = $this->db->update('open_position_files');
+        return $update;
+    }
+
 }

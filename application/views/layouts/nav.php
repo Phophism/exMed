@@ -59,7 +59,7 @@
                                 <?php } ?>
                                 <?php if ($this->session->userdata('is_logged_in')) { ?>
                                     <ul onclick="location.href = '<?php echo base_url() ?>Login/u_logout'">
-                                        <li><i class="icon-lock"></i> <span>Logout</span></li>
+                                       <li onmouseover="" style="cursor: pointer;"><i class="icon-lock"></i> <span>Logout</span></li>
                                     </ul>
                                 <?php } ?>
 

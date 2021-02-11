@@ -25,7 +25,7 @@ $this->load->view('layouts/header');
             <div class="col p-md-0">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">หน้าหลัก</li>
-                    <li class="breadcrumb-item"><a href="<?php echo base_url();?>/Job_list">ประกาศรับสมัคร</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/Job_list">ประกาศรับสมัคร</a></li>
                     <li class="breadcrumb-item"><?php echo $data['pos_num'] ?></li>
                 </ol>
             </div>
@@ -313,12 +313,33 @@ $this->load->view('layouts/header');
                                                             </td>
                                                             <td>
                                                                 <div class="text-center">
-                                                                    <a href="<?php echo base_url() . $file->file_path; ?>" target="_blank">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16" href="<?php echo base_url() . $file->file_path; ?>">
+                                                                    <a target="_blank" href='<?php echo base_url() . $file->file_path; ?>'>
+                                                                        <svg onclick=" location.href='<?php echo base_url() . "job_detail/download_count/" . $data['id'] . "/" . $file->id . "/" . $file->file_name; ?>'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16" href="<?php echo base_url() . $file->file_path; ?>">
                                                                             <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                                                                             <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                                                                         </svg>
                                                                     </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php
+                                                    }
+                                                    if (empty($files)) {
+                                                    ?>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="text-center">
+                                                                    -
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-center">
+                                                                    -
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-center">
+                                                                    -
                                                                 </div>
                                                             </td>
                                                         </tr>

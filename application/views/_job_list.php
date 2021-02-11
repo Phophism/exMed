@@ -55,60 +55,60 @@ $this->load->view('layouts/header');
                                             <!-- <th style="display:none" >หมายเลขสมัครงาน</th> -->
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody >
                                         <?php
 
                                         foreach ($result as $detail) {
                                         ?>
                                             <tr>
                                                 <td class="text-center" style="width: 5rem;">
-                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
+                                                    <div onmouseover="" style="cursor: pointer;" onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->public_date; ?>
                                                     </div>
                                                 </td>
                                                 <td class="text-center" style="width: 5rem;">
-                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
+                                                    <div onmouseover="" style="cursor: pointer;" onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->end_date; ?>
                                                     </div>
                                                 </td>
                                                 <td class="text-center">
-                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
+                                                    <div onmouseover="" style="cursor: pointer;" onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->position_name . " [" . $detail->pos_num . "]"; ?>
                                                     </div>
                                                 </td>
                                                 <td class="text-center">
-                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
+                                                    <div onmouseover="" style="cursor: pointer;" onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->type_name; ?>
                                                     </div>
                                                 </td>
                                                 <td class="text-center" style="width: 7rem;">
-                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
+                                                    <div onmouseover="" style="cursor: pointer;" onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->ward_name; ?>
                                                     </div>
                                                 </td>
                                                 <td class="text-center">
-                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
+                                                    <div onmouseover="" style="cursor: pointer;" onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->n_open; ?>
                                                     </div>
                                                 </td>
                                                 <td class="text-center">
-                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
+                                                    <div onmouseover="" style="cursor: pointer;" onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->salary; ?>
                                                     </div>
                                                 </td>
                                                 <td class="text-center">
-                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
+                                                    <div onmouseover="" style="cursor: pointer;" onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->job_status_name; ?>
                                                     </div>
                                                 </td>
                                                 <td style="width: 7rem;">
-                                                    <div class="overflow-prevent" onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
+                                                    <div onmouseover="" style="cursor: pointer;" class="overflow-prevent" onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->remark; ?>
                                                     </div>
                                                 </td>
                                                 <?php if ($this->session->userdata('is_logged_in')) { ?>
                                                     <td class="text-center">
-                                                        <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
+                                                        <div onmouseover="" style="cursor: pointer;" onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                             <?php echo $detail->view_count; ?>
                                                         </div>
                                                     </td>
