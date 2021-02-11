@@ -1,4 +1,5 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Add_job extends CI_Controller
 {
@@ -9,11 +10,13 @@ class Add_job extends CI_Controller
         date_default_timezone_set("Asia/Bangkok");
         $this->load->model('job_list_model');
         $this->load->helper('url');
+        if (!$this->session->userdata('is_logged_in')) {
+            redirect(base_url() . 'login');
+        }
     }
 
     public function index()
     {
-
         $job_type = $this->job_list_model->get_job_type();
         $job_position = $this->job_list_model->get_job_position();
         $ward_list = $this->job_list_model->get_ward();

@@ -15,11 +15,12 @@ class Job_list extends CI_Controller
 	public function index()
 	{
 		$results = $this->Job_list_model->get_open_position_list();
-		$this->load->view('_job_list', 
-		array(
-			"result" => $results,
-			"title" => "รายการงานเปิดรับสมัคร"
-		));
+		$this->load->view(
+			'_job_list',
+			array(
+				"result" => $results,
+				"title" => "รายการงานเปิดรับสมัคร"
+			)
+		);
 	}
-
 }

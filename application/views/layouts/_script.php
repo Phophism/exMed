@@ -51,18 +51,24 @@
 </script>
 
 <script type="text/javascript">
-    $("#clicker").click(function(e) {
-        var hidClicked = e.currentTarget.data("id"); // retrieve the hid by data attr.
-        $.ajax({
-            type: "POST",
-            url: "<?php base_url(); ?>CRUD/Edit_job/delete_file",
-            data: {
-                hid: hidClicked
-            }, // pass it as POST parameter
-            success: function(data) {
-                alert("I got a view");
-                console.log(data);
-            }
+    $(document).ready(function() {
+        $(".delete").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url() ?>/CRUD/Edit_job/delete_file",
+                cache: false,
+                data: {
+                    id_post: $(this).attr("id")
+                }, // since, you need to delete post of particular id
+                success: function(reaksi) {
+                    if (reaksi) {
+                        alert("Success");
+                    } else {
+                        alert("ERROR");
+                    }
+                }
+            });
         });
     });
 </script>

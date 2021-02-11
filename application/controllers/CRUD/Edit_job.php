@@ -1,4 +1,5 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Edit_job extends CI_Controller
 {
@@ -12,13 +13,24 @@ class Edit_job extends CI_Controller
         date_default_timezone_set("Asia/Bangkok");
         $this->load->model('job_list_model');
         $this->load->helper('url');
+        if (!$this->session->userdata('is_logged_in')) {
+            // // Allow some methods?
+            // $allowed = array(
+            //     'index',
+            //     'update_job',
+            //     'delete_file',
+            // );
+
+            // if (!in_array($this->router->fetch_method(), $allowed)) {
+            redirect(base_url() . 'login');
+            // }
+        }
     }
 
     public function index()
     {
 
         //$get_id = $this->input->post('id');
-
         $job_detail = $this->uri->segment(4);
         $data = $this->job_list_model->get_job_detail($job_detail);
         $job_type = $this->job_list_model->get_job_type();
@@ -189,9 +201,9 @@ class Edit_job extends CI_Controller
         redirect('Job_detail/index/' . $id);
     }
 
-    public function delete_file(){
-        $id = $this->input->post("id");
-        echo $id;
-        $this->job_list_model->delete_file($id);
+    public function delete_file()
+    {
+        $id_post = $this->input->post("id_post");
+        $this->job_list_model->delete_file($id_post);
     }
 }

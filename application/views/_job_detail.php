@@ -24,8 +24,9 @@ $this->load->view('layouts/header');
         <div class="row page-titles mx-0">
             <div class="col p-md-0">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item">หน้าหลัก</li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url();?>/Job_list">ประกาศรับสมัคร</a></li>
+                    <li class="breadcrumb-item"><?php echo $data['pos_num'] ?></li>
                 </ol>
             </div>
         </div>
@@ -42,42 +43,44 @@ $this->load->view('layouts/header');
                                 <div class="col-8">
                                     <div class="row">
                                         <div class="col-12" style="justify-content: center ; align-items: center ; display: flex;">
-                                            <h1>รายละเอียดงาน</h1>
+                                            <h1 style="color:#505050">รายละเอียดงาน</h1>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-12" style="justify-content: center ; align-items: center ; display: flex;">
-                                            <h5><?php echo $data['pos_num']; ?>&ensp; - </h5>
-                                            <h5> &ensp; <?php echo $data['position_name']; ?></h5>
+                                            <h5 style="color:#505050"><?php echo $data['pos_num']; ?>&ensp; - </h5>
+                                            <h5 style="color:#505050"> &ensp; <?php echo $data['position_name']; ?></h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-2">
-                                    <button type="button" onclick="location.href = '<?php echo base_url() ?>Job_detail/Edit_id/<?php echo $data['id'] ?>'" class="btn mb-1 btn-rounded btn-outline-warning" style="margin-right:10px">แก้ไข</button>
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn mb-1 btn-rounded btn-outline-danger" data-toggle="modal" data-target="#basicModal">ลบ</button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="basicModal">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">ยืนยันการลบ</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">คุณต้องการลบประกาศของตำแหน่ง " <?php echo "<br>".$data['pos_num'] . " - " . $data['position_name'] ;?> " ใช่หรือไม่?</div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-light" data-dismiss="modal">ยกเลิก</button>
-                                                    <button type="button" onclick="location.href = '<?php echo base_url() ?>CRUD/Delete_job/index/<?php echo $data['id'] ?>'" class="btn btn-danger">ยืนยัน</button>
+                                    <?php if ($this->session->userdata('is_logged_in')) { ?>
+                                        <button type="button" onclick="location.href = '<?php echo base_url() ?>Job_detail/Edit_id/<?php echo $data['id'] ?>'" class="btn mb-1 btn-rounded btn-outline-warning" style="margin-right:10px">แก้ไข</button>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn mb-1 btn-rounded btn-outline-danger" data-toggle="modal" data-target="#basicModal">ลบ</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="basicModal">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">ยืนยันการลบ</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">คุณต้องการลบประกาศของตำแหน่ง " <?php echo "<br>" . $data['pos_num'] . " - " . $data['position_name']; ?> " ใช่หรือไม่?</div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-light" data-dismiss="modal">ยกเลิก</button>
+                                                        <button type="button" onclick="location.href = '<?php echo base_url() ?>CRUD/Delete_job/index/<?php echo $data['id'] ?>'" class="btn btn-danger">ยืนยัน</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <hr>
 
-                            <h4 class="card-title">ข้อมูลประกาศ</h4>
+                            <h4 class="card-title" style="color:#505050">ข้อมูลประกาศ</h4>
                             <br>
                             <lable>
                                 <div class="row">
@@ -276,7 +279,7 @@ $this->load->view('layouts/header');
                             <div class="col-12">
                                 <br>
                                 <hr>
-                                <h4 class="card-title">เอกสารประกาศ</h4>
+                                <h4 class="card-title" style="color:#505050">เอกสารประกาศ</h4>
                             </div>
 
                             <!-- file list -->

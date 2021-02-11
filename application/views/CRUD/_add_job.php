@@ -22,8 +22,8 @@ $this->load->view('layouts/header');
         <div class="row page-titles mx-0">
             <div class="col p-md-0">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item">หน้าหลัก</li>
+                    <li class="breadcrumb-item active">เพิ่มประกาศ</li>
                 </ol>
             </div>
         </div>
@@ -34,6 +34,19 @@ $this->load->view('layouts/header');
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="col-8">
+                                    <div class="row">
+                                        <div class="col-12" style="justify-content: center ; align-items: center ; display: flex;">
+                                            <h1 style="color:#505050">เพิ่มประกาศ</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <hr>
+                            <br>
                             <div class="basic-form">
                                 <form class="form-validate" action="<?php echo base_url('CRUD/Add_job/form_submit') ?>" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
@@ -222,7 +235,7 @@ $this->load->view('layouts/header');
                                                     <div class="col-3">
                                                         <div class="row">
                                                             <div class="col-5" style="justify-content: center ; align-items: center ; display: flex;">
-                                                                <label >วันที่เผยแพร่:</label>
+                                                                <label>วันที่เผยแพร่:</label>
                                                             </div>
                                                             <div class="col-7" style="padding-left:0px; ">
                                                                 <div class="input-group">

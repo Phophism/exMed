@@ -23,8 +23,8 @@ $this->load->view('layouts/header');
         <div class="row page-titles mx-0">
             <div class="col p-md-0">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item">หน้าหลัก</li>
+                    <li class="breadcrumb-item">ประกาศรับสมัคร</li>
                 </ol>
             </div>
         </div>
@@ -35,13 +35,13 @@ $this->load->view('layouts/header');
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title" style="justify-content: center ; align-items: center ; display: flex;">ประกาศรับสมัครพนักงาน</h4>
+                            <h2 class="" style="color:#505050 ;justify-content: center ; align-items: center ; display: flex;">ประกาศรับสมัครพนักงาน</h2>
                             <div class="table-responsive">
                                 <table class="table table-striped table-hover table-bordered zero-configuration" id="mydatatable">
                                     <thead>
                                         <tr>
                                             <th class="text-center">วันที่ประกาศ</th>
-                                            <th class="text-center">เลขที่ตำแหน่ง</th>
+                                            <th class="text-center">วันที่สิ้นสุด</th>
                                             <th class="text-center">ตำแหน่ง</th>
                                             <th class="text-center">ประเภท</th>
                                             <th class="text-center">หน่วยงาน</th>
@@ -49,7 +49,9 @@ $this->load->view('layouts/header');
                                             <th class="text-center">อัตราจ้าง</th>
                                             <th class="text-center">สถานะ</th>
                                             <th class="text-center">หมายเหตุ</th>
-                                            <th class="text-center">Ref.</th>
+                                            <?php if ($this->session->userdata('is_logged_in')) { ?>
+                                                <th class="text-center">Ref.</th>
+                                            <?php } ?>
                                             <!-- <th style="display:none" >หมายเลขสมัครงาน</th> -->
                                         </tr>
                                     </thead>
@@ -59,56 +61,58 @@ $this->load->view('layouts/header');
                                         foreach ($result as $detail) {
                                         ?>
                                             <tr>
-                                                <td>
+                                                <td class="text-center" style="width: 5rem;">
                                                     <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->public_date; ?>
                                                     </div>
                                                 </td>
-                                                <td>
+                                                <td class="text-center" style="width: 5rem;">
                                                     <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
-                                                        <?php echo $detail->pos_num; ?>
+                                                        <?php echo $detail->end_date; ?>
                                                     </div>
                                                 </td>
-                                                <td>
+                                                <td class="text-center">
                                                     <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
-                                                        <?php echo $detail->position_name; ?>
+                                                        <?php echo $detail->position_name . " [" . $detail->pos_num . "]"; ?>
                                                     </div>
                                                 </td>
-                                                <td>
+                                                <td class="text-center">
                                                     <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->type_name; ?>
                                                     </div>
                                                 </td>
-                                                <td>
+                                                <td class="text-center" style="width: 7rem;">
                                                     <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->ward_name; ?>
                                                     </div>
                                                 </td>
-                                                <td>
+                                                <td class="text-center">
                                                     <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->n_open; ?>
                                                     </div>
                                                 </td>
-                                                <td>
+                                                <td class="text-center">
                                                     <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->salary; ?>
                                                     </div>
                                                 </td>
-                                                <td>
+                                                <td class="text-center">
                                                     <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->job_status_name; ?>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
+                                                <td style="width: 7rem;">
+                                                    <div class="overflow-prevent" onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
                                                         <?php echo $detail->remark; ?>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
-                                                        <?php echo $detail->view_count; ?>
-                                                    </div>
-                                                </td>
+                                                <?php if ($this->session->userdata('is_logged_in')) { ?>
+                                                    <td class="text-center">
+                                                        <div onclick="location.href = '<?php echo base_url() ?>job_detail/counter/<?php echo $detail->id ?>'">
+                                                            <?php echo $detail->view_count; ?>
+                                                        </div>
+                                                    </td>
+                                                <?php } ?>
                                                 <!-- <td style="display:none" >
                                                     <?php echo $detail->pos_num; ?>
                                                 </td> -->

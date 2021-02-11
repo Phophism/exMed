@@ -59,10 +59,44 @@
         }
 
         .download-icon {
-            background: url('<?php echo base_url();?>/assets/images/icon/download-button.png');
+            background: url('<?php echo base_url(); ?>/assets/images/icon/download-button.png');
             height: 20px;
             width: 20px;
             display: block;
+
+        }
+
+        .overflow-prevent {
+            width: 120px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .title-img {
+            max-width: 23%;
+            max-height: 23%;
+        }
+
+        @media screen and (max-width: 768px) {
+            .title-img {
+                width: 50%;
+                height: 50%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .title-img {
+                max-width: 30%;
+                max-height: 30%;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .title-img {
+                max-width: 23%;
+                max-height: 23%;
+            }
         }
     </style>
 
