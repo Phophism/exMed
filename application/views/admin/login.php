@@ -45,7 +45,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
           <div class="form-input-content">
             <div class="card login-form mb-0">
               <div class="card-body pt-5">
-                <h4 class="text-center">Rosella</h4>
+                <h4 class="text-center">LOGIN</h4>
                 <form action="<?php echo base_url(); ?>Login/u_login" method="post" enctype="multipart/form-data" class="mt-5 mb-5 login-input form-validate">
                   <div class="form-group">
                     <input id="username" name="username" type="text" class="form-control" placeholder="Username">
