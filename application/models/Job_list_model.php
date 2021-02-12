@@ -32,7 +32,8 @@ class Job_list_model extends CI_Model
         JS.job_status_name,
         OP.remark,
         OP.view_count,
-        OP.pos_num
+        OP.pos_num,
+        OP.status_id
         from open_position as OP
         inner join tb_job_type as JT
         on OP.job_type_id = JT.id
@@ -42,6 +43,7 @@ class Job_list_model extends CI_Model
         on OP.unit_id = L.Ward_code
         inner join tb_job_status as JS
         on OP.status_id = JS.id
+        where OP.status_id != '00'
             ")->result();
         return $data;
 

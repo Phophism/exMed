@@ -188,6 +188,8 @@ class Edit_job extends CI_Controller
             }
         }
 
+        
+
         redirect('Job_detail/index/' . $id);
     }
 
